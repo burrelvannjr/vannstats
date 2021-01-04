@@ -1,0 +1,14 @@
+Package: vannstats
+Title: Simplified Univariate Statistics for Vann PA 606
+    Analysis
+Version: 0.21.01.04
+Description: Runs univariate statistics to check normality in a simplified way.
+Depends:
+    R (>= 3.2.3)
+Imports: MASS, dplyr, ggplot2, rlang, tidyverse, car, purrr, stats, graphics
+License: GPL-2
+LazyData: true
+NeedsCompilation: no
+Author: Burrel Vann Jr [aut, cre]
+Maintainer: Burrel Vann Jr <bvannjr@sdsu.edu>
+RoxygenNote: 7.1.1
