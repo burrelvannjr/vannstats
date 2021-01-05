@@ -16,9 +16,39 @@
 
 
 hst <- function(df, var1, by1, by2){
+  v1 <- NULL #necessary for removing the "undefined global function" warning
   bygroups <- length(match.call())-3
   n1 <- deparse(substitute(var1))
   n1 <- as.character(n1)
+  if(bygroups==-1) {
+    title <- paste0("Histogram of '", deparse(substitute(df)), "'")
+    labx <- deparse(substitute(df))
+    df <- as.data.frame(df)
+    df <- df %>%
+      mutate(group = "group")
+    names(df) <- c("v1","group")
+    n0 <- "v1"
+    n0 <- as.character(n0)
+    dens = split(df, df$group) %>%
+      map_df(~ tibble(v1=seq(.00001*min(.x[[n0]],na.rm=T), 1.96*max(.x[[n0]],na.rm=T), length=100),
+                      density=dnorm(x=v1, mean=mean(.x[[n0]],na.rm=T), sd=sd(.x[[n0]],na.rm=T))),
+             .id="group")
+    b1 <- df
+    b1 <- b1[,1]
+    bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
+    #bw <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/3)))
+    #print(((2 * (IQR(b1, na.rm=T)))))
+    #print((length(b1)^(1/8)))
+    p <- ggplot2::ggplot(data = df, aes(x=v1)) +
+      geom_histogram(color="black", fill="lightgrey", bins = bins) +
+      facet_null() +
+      geom_line(data=dens, aes(x=v1, y=(density*20)), colour="black") +
+      ggtitle(title) + xlab(labx) +
+      theme_classic() +
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
+            axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
+            axis.text.y = element_text(face="bold", colour="#000000"), plot.title = element_text(hjust = 0.5, lineheight=1.5, face="bold"))
+  }
   if(bygroups==0) {
     title <- paste0("Histogram of '", deparse(substitute(var1)), "'")
     df <- df %>%
@@ -93,4 +123,6 @@ hst <- function(df, var1, by1, by2){
   #print(df)
   return(p)
 }
+
+
 

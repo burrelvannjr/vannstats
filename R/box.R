@@ -14,8 +14,13 @@
 
 box <- function(df, var1, by1, by2){
   bygroups <- length(match.call())-3
+  if(bygroups==-1) {
+    main <- paste0("Boxplot of '", deparse(substitute(df)), "'")
+    boxplot(df, main = main) # a way of calling values within #df$var1
+    #boxplot({{ var1 }}, data = df, main = main)
+  }
   if(bygroups==0) {
-    main <- paste0("Boxplot of ", deparse(substitute(var1)))
+    main <- paste0("Boxplot of '", deparse(substitute(var1)), "'")
     boxplot(eval(substitute(var1), df), main = main) # a way of calling values within #df$var1
     #boxplot({{ var1 }}, data = df, main = main)
   }

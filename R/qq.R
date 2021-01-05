@@ -14,7 +14,23 @@
 #' @export
 #'
 qq <- function(df, var1, by1, by2){
+  v1 <- NULL #necessary for removing the "undefined global function" warning
   bygroups <- length(match.call())-3
+  if(bygroups==-1) {
+    title <- paste0("Normal Q-Q Plot of '", deparse(substitute(df)), "'")
+    laby <- paste0("Observed Value of '",deparse(substitute(df)),"'")
+    df <- as.data.frame(df)
+    names(df) <- "v1"
+    p <- ggplot2::ggplot(data = df, aes(sample=v1)) +
+      stat_qq(shape = 1) + stat_qq_line() +
+      facet_null() +
+      ggtitle(title) + labs(x = "Expected (Theoretical) Normal", y = laby) +
+      theme_classic() +
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
+            axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
+            axis.text.y = element_text(face="bold", colour="#000000"), plot.title = element_text(hjust = 0.5, lineheight=1.5, face="bold"))
+  }
+
   if(bygroups==0) {
     title <- paste0("Normal Q-Q Plot of '", deparse(substitute(var1)), "'")
     laby <- paste0("Observed Value of '",deparse(substitute(var1)),"'")
