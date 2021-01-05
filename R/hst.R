@@ -33,7 +33,7 @@ hst <- function(df, var1, by1, by2){
     #bw <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/3)))
     #print(((2 * (IQR(b1, na.rm=T)))))
     #print((length(b1)^(1/8)))
-    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }}), na.rm=T) +
+    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", bins = bins) +
       facet_null() +
       geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
@@ -56,7 +56,7 @@ hst <- function(df, var1, by1, by2){
     b1 <- df %>% dplyr::select({{ var1 }})
     b1 <- b1[,1]
     bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
-    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }}), na.rm=T) +
+    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", bins = bins) +
       facet_wrap(~group) +
       geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
@@ -79,7 +79,7 @@ hst <- function(df, var1, by1, by2){
     b1 <- df %>% dplyr::select({{ var1 }})
     b1 <- b1[,1]
     bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
-    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }}), na.rm=T) +
+    p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", bins = bins) +
       facet_wrap(~group) +
       geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
