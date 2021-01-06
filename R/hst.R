@@ -17,6 +17,7 @@
 
 hst <- function(df, var1, by1, by2){
   v1 <- NULL #necessary for removing the "undefined global function" warning
+  density1 <- NULL
   bygroups <- length(match.call())-3
   n1 <- deparse(substitute(var1))
   n1 <- as.character(n1)
@@ -31,17 +32,18 @@ hst <- function(df, var1, by1, by2){
     n0 <- as.character(n0)
     dens = split(df, df$group) %>%
       map_df(~ tibble(v1=seq(min(.x[[n0]],na.rm=T), max(.x[[n0]],na.rm=T), length=1000),
-                      density=dnorm(x=v1, mean=mean(.x[[n0]],na.rm=T), sd=sd(.x[[n0]],na.rm=T))),
+                      density1=dnorm(x=v1, mean=mean(.x[[n0]],na.rm=T), sd=sd(.x[[n0]],na.rm=T))),
              .id="group")
     b1 <- df
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
     bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x=v1)) +
       geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
       facet_null() +
-      geom_line(data=dens, aes(x=v1, y=(density*20)), colour="black") +
+      geom_line(data=dens, aes(x=v1, y=(density)), colour="black") +
       ggtitle(title) + xlab(labx) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -54,17 +56,18 @@ hst <- function(df, var1, by1, by2){
       mutate(group = "group")
     dens = split(df, df$group) %>%
       map_df(~ tibble(var1=seq(min(.x[[n1]],na.rm=T), max(.x[[n1]],na.rm=T), length=1000),
-                      density=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
+                      density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
              .id="group")
     b1 <- df %>% dplyr::select({{ var1 }})
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
     bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
       facet_null() +
-      geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
       ggtitle(title) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -79,17 +82,18 @@ hst <- function(df, var1, by1, by2){
     #print(bygroups)
     dens = split(df, df$group) %>%
       map_df(~ tibble(var1=seq(min(.x[[n1]],na.rm=T), max(.x[[n1]],na.rm=T), length=1000),
-                      density=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
+                      density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
              .id="group")
     b1 <- df %>% dplyr::select({{ var1 }})
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
     bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
       facet_wrap(~group) +
-      geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
       ggtitle(title) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -104,17 +108,18 @@ hst <- function(df, var1, by1, by2){
     #print(bygroups)
     dens = split(df, df$group) %>%
       map_df(~ tibble(var1=seq(min(.x[[n1]],na.rm=T), max(.x[[n1]],na.rm=T), length=1000),
-                      density=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
+                      density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
              .id="group")
     b1 <- df %>% dplyr::select({{ var1 }})
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
     bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
       geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
       facet_wrap(~group) +
-      geom_line(data=dens, aes(x=var1, y=(density*20)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
       ggtitle(title) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
