@@ -2,6 +2,7 @@
 
 export(box)
 export(hst)
+export(mode)
 export(qq)
 export(tab)
 import(dplyr)

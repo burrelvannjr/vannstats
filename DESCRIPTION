@@ -1,6 +1,6 @@
 Package: vannstats
 Title: Simplified Statistics for Vann PA 606
-Version: 1.0.01.09
+Version: 1.0.02.27
 Description: Runs univariate and bivariate statistical procedures in a simplified way.
 Depends:
     R (>= 3.2.3)

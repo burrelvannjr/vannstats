@@ -44,7 +44,7 @@ hst <- function(df, var1, by1, by2){
     #                  density1=dnorm(x=v1, mean=mean(.x[[n0]],na.rm=T), sd=sd(.x[[n0]],na.rm=T))),
     #         .id="group")
     dens = split(df, df$group) %>%
-      map_df(~ tibble(v1=seq(((mean(.x[[n0]], na.rm=T))-(2.58*(ifelse(length(.x)>1, sd(.x[[n0]], na.rm=T), 0)))), ((mean(.x[[n0]], na.rm=T))+(2.58*(ifelse(length(.x)>1, sd(.x[[n0]], na.rm=T), 0)))), length=1000),
+      map_df(~ tibble(v1=seq(((mean(.x[[n0]], na.rm=T))-(3.291*(ifelse(length(.x)>1, sd(.x[[n0]], na.rm=T), 0)))), ((mean(.x[[n0]], na.rm=T))+(3.291*(ifelse(length(.x)>1, sd(.x[[n0]], na.rm=T), 0)))), length=1000),
                       density1=dnorm(x=v1, mean=mean(.x[[n0]],na.rm=T), sd=(ifelse(length(.x)>1, sd(.x[[n0]], na.rm=T), 0)))),
              .id="group")
     b1 <- df
@@ -71,7 +71,7 @@ hst <- function(df, var1, by1, by2){
     df <- df %>%
       mutate(group = "group")
     dens = split(df, df$group) %>%
-      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
+      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
                       density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))),
              .id="group")
     #dens = split(df, df$group) %>%
@@ -109,7 +109,7 @@ hst <- function(df, var1, by1, by2){
     #                  density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=sd(.x[[n1]],na.rm=T))),
     #         .id="group")
     dens = split(df, df$group) %>%
-      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
+      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
                       density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))),
              .id="group")
     b1 <- df %>% dplyr::select({{ var1 }})
@@ -140,7 +140,7 @@ hst <- function(df, var1, by1, by2){
     title <- paste0("Histogram of '", deparse(substitute(var1)),"' by '", deparse(substitute(by1)),"' and '", deparse(substitute(by2)), "'")
     #print(bygroups)
     dens = split(df, df$group) %>%
-      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(2.58*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
+      map_df(~ tibble(var1=seq(((mean(.x[[n1]], na.rm=T))-(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), ((mean(.x[[n1]], na.rm=T))+(3.291*(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))), length=1000),
                       density1=dnorm(x=var1, mean=mean(.x[[n1]],na.rm=T), sd=(ifelse(length(.x)>1, sd(.x[[n1]], na.rm=T), 0)))),
              .id="group")
     #dens = split(df, df$group) %>%
