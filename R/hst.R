@@ -16,6 +16,7 @@
 
 
 hst <- function(df, var1, by1, by2){
+  options(warn=-1)
   v1 <- NULL #necessary for removing the "undefined global function" warning
   density1 <- NULL
   group <- NULL
@@ -51,16 +52,27 @@ hst <- function(df, var1, by1, by2){
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
-    bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    bw <- ((2 * IQR(b1, na.rm=T)) / length(b1)^(1/3))
+    #print(bw)
+    if(bw<1){
+      bw <- 1
+    }
+    #print(bw)
+    minx <- 0
+    if(min(b1)<minx){
+      minx <- min(b1)
+    }
+    maxx <- max(b1) + 1
+    #print(maxx)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x=v1)) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
       facet_null() +
       geom_line(data=dens, aes(x=v1, y=(density)), colour="black") +
-      ggtitle(title) + xlab(labx) +
+      ggtitle(title) + xlab(labx) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
             axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
@@ -82,17 +94,27 @@ hst <- function(df, var1, by1, by2){
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
-    bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    bw <- ((2 * IQR(b1, na.rm=T)) / length(b1)^(1/3))
+    #print(bw)
+    if(bw<1){
+      bw <- 1
+    }
+    #print(bw)
+    minx <- 0
+    if(min(b1)<minx){
+      minx <- min(b1)
+    }
+    maxx <- max(b1) + 1
     #dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
       facet_null() +
       geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
-      ggtitle(title) +
+      ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
             axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
@@ -116,7 +138,17 @@ hst <- function(df, var1, by1, by2){
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
-    bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    bw <- ((2 * IQR(b1, na.rm=T)) / length(b1)^(1/3))
+    #print(bw)
+    if(bw<1){
+      bw <- 1
+    }
+    #print(bw)
+    minx <- 0
+    if(min(b1)<minx){
+      minx <- min(b1)
+    }
+    maxx <- max(b1) + 1
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
     #print(sapply(df2, class))
@@ -124,10 +156,10 @@ hst <- function(df, var1, by1, by2){
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
       facet_wrap(~group) +
       geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
-      ggtitle(title) +
+      ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
             axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
@@ -151,17 +183,27 @@ hst <- function(df, var1, by1, by2){
     b1 <- b1[,1]
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
-    bw <- (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
+    bw <- ((2 * IQR(b1, na.rm=T)) / length(b1)^(1/3))
+    #print(bw)
+    if(bw<1){
+      bw <- 1
+    }
+    #print(bw)
+    minx <- 0
+    if(min(b1)<minx){
+      minx <- min(b1)
+    }
+    maxx <- max(b1) + 1
     #dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw) +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
       facet_wrap(~group) +
       geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
-      ggtitle(title) +
+      ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
             axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
