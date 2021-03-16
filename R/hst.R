@@ -53,16 +53,16 @@ hst <- function(df, var1, by1, by2){
     #bins <- ((2 * (IQR(b1, na.rm=T))) / (length(b1)^(1/(length(b1)))))
     bins <- diff(range(b1, na.rm=T)) / (2 * IQR(b1, na.rm=T) / length(b1)^(1/3))
     bw <- ((2 * IQR(b1, na.rm=T)) / length(b1)^(1/3))
-    #print(bw)
     if(bw<1){
       bw <- 1
     }
     #print(bw)
     minx <- 0
-    if(min(b1)<minx){
-      minx <- min(b1)
+    if(min(b1, na.rm = T)<minx){
+      minx <- min(b1, na.rm = T)
     }
-    maxx <- max(b1) + 1
+    maxx <- max(b1, na.rm = T) + 1
+    #print(minx)
     #print(maxx)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
@@ -101,10 +101,10 @@ hst <- function(df, var1, by1, by2){
     }
     #print(bw)
     minx <- 0
-    if(min(b1)<minx){
-      minx <- min(b1)
+    if(min(b1, na.rm = T)<minx){
+      minx <- min(b1, na.rm = T)
     }
-    maxx <- max(b1) + 1
+    maxx <- max(b1, na.rm = T) + 1
     #dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
@@ -145,10 +145,10 @@ hst <- function(df, var1, by1, by2){
     }
     #print(bw)
     minx <- 0
-    if(min(b1)<minx){
-      minx <- min(b1)
+    if(min(b1, na.rm = T)<minx){
+      minx <- min(b1, na.rm = T)
     }
-    maxx <- max(b1) + 1
+    maxx <- max(b1, na.rm = T) + 1
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
     #print(sapply(df2, class))
@@ -190,10 +190,10 @@ hst <- function(df, var1, by1, by2){
     }
     #print(bw)
     minx <- 0
-    if(min(b1)<minx){
-      minx <- min(b1)
+    if(min(b1, na.rm = T)<minx){
+      minx <- min(b1, na.rm = T)
     }
-    maxx <- max(b1) + 1
+    maxx <- max(b1, na.rm = T) + 1
     #dens <- dens %>% mutate(density=(density1*bw*nrow(df))) #newheight is yheight * bw * length(df)
     df2 <- df %>% dplyr::count(group)
     df2$group <- as.character(df2$group)
