@@ -18,6 +18,7 @@ This function returns the mode for a variable within a data frame or a list of v
 This function returns the mode for a given data frame.
 }
 \examples{
+
 data <- mtcars
 
 mode(data$mpg)

@@ -5,6 +5,7 @@
 #' @param na.rm remove the NAs, default is FALSE.
 #' @return This function returns the mode for a variable within a data frame or a list of values.
 #' @examples
+#'
 #' data <- mtcars
 #'
 #' mode(data$mpg)
