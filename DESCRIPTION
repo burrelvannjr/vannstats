@@ -4,7 +4,7 @@ Version: 1.0.03.27
 Description: Runs univariate and bivariate statistical procedures in a simplified way.
 Depends:
     R (>= 3.2.3)
-Imports: MASS, dplyr, ggplot2, rlang, tidyverse, car, purrr, stats, graphics
+Imports: MASS, gplots, dplyr, ggplot2, rlang, tidyverse, car, purrr, stats, graphics
 License: GPL-3 + file LICENSE
 LazyData: true
 NeedsCompilation: no

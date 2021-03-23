@@ -3,4 +3,4 @@
 #' A data set containing General Social Survey data from 2014
 #'
 #' @format A data frame with 2538 observations and 676 variables.
-"gss_2014"
+"GSS2014"
