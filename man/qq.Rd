@@ -16,7 +16,7 @@ qq(df, var1, by1, by2)
 \item{by2}{a potential second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.}
 }
 \value{
-This function returns the histogram.
+This function returns the quantile-quantile plot for \code{var1} in data frame \code{df}. Can be split to return a quantile-quantile plot for \code{var1} in data frame \code{df}, broken out by \code{var2}.
 }
 \description{
 This function plots a Q-Q/Quantile-Quantile plot (qq) on a given data frame, and uses simplified calls within the function to parse the histogram by up to variables.

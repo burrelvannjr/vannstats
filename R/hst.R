@@ -7,7 +7,7 @@
 #' @param var1 the variable of interest that should be plotted.
 #' @param by1 a grouping variable by which the histogram for \code{var1} should be parsed.
 #' @param by2 a potential second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.
-#' @return This function returns the histogram.
+#' @return This function returns the histogram for \code{var1} in data frame \code{df}. Can be split to return a histogram for \code{var1} in data frame \code{df}, broken out by \code{var2}.
 #' @examples
 #' data <- mtcars
 #'
@@ -16,7 +16,8 @@
 
 
 hst <- function(df, var1, by1, by2){
-  options(warn=-1)
+  #options(warn=-1)
+  #suppressWarnings()
   v1 <- NULL #necessary for removing the "undefined global function" warning
   density1 <- NULL
   group <- NULL

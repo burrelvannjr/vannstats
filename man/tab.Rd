@@ -14,7 +14,7 @@ tab(df, var1, var2)
 \item{var2}{a second grouping variable.}
 }
 \value{
-This function returns the observed and expected frequencies of a bivariate relationship.
+This function returns the observed and expected frequencies of a bivariate relationship between \code{var1} and \code{var2} in data frame \code{df}.
 }
 \description{
 This function returns a crosstab (tab) on a given data frame, and using simplified calls within the function for two variables, to return the observed and expected frequencies.

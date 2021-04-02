@@ -16,12 +16,14 @@ box <- function(df, var1, by1, by2){
   bygroups <- length(match.call())-3
   if(bygroups==-1) {
     main <- paste0("Boxplot of '", deparse(substitute(df)), "'")
-    boxplot(df, main = main) # a way of calling values within #df$var1
+    laby <- deparse(substitute(df))
+    boxplot(df, main = main, ylab = laby)
     #boxplot({{ var1 }}, data = df, main = main)
   }
   if(bygroups==0) {
     main <- paste0("Boxplot of '", deparse(substitute(var1)), "'")
-    boxplot(eval(substitute(var1), df), main = main) # a way of calling values within #df$var1
+    laby <- deparse(substitute(var1))
+    boxplot(eval(substitute(var1), df), main = main, ylab = laby) # a way of calling values within #df$var1
     #boxplot({{ var1 }}, data = df, main = main)
   }
   if(bygroups==1) {
@@ -36,7 +38,5 @@ box <- function(df, var1, by1, by2){
     laby2 <- deparse(substitute(var1))
     boxplot(eval(substitute(var1), df) ~ eval(substitute(by1), df) + eval(substitute(by2), df), main = main, xlab = labx2, ylab = laby2)
   }
+  #return(p)
 }
-
-
-

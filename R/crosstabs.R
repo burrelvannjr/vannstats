@@ -6,7 +6,8 @@
 #' @param df data frame to read in.
 #' @param var1 a first grouping variable.
 #' @param var2 a second grouping variable.
-#' @return This function returns the observed and expected frequencies of a bivariate relationship.
+#' @return This function returns the observed and expected frequencies of a bivariate relationship between \code{var1} and \code{var2} in data frame \code{df}.
+
 #' @examples
 #' data <- mtcars
 #'
@@ -15,7 +16,7 @@
 
 
 tab <- function(df, var1, var2){
-  options(warn=-1) # suppress warnings for chi square run
+  #options(warn=-1) # suppress warnings for chi square run
   #v1 <- paste0(substitute(df),"$",substitute(var1)) # how to use $ operator in dataframe$variable
   #v2 <- paste0(substitute(df),"$",substitute(var2)) # how to use $ operator in dataframe$variable
   v1 <- (eval(substitute(var1), df))
