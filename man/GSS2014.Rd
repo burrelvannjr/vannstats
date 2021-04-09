@@ -6,8 +6,7 @@
 \title{General Social Survey, 2014}
 \format{
 A data frame with 2538 observations and 676 variables.
-\describe{
- \tabular{ll}{
+\tabular{ll}{
  id \tab respondent id number \cr
  age \tab age of respondent \cr
 sex \tab respondents sex \cr
@@ -684,7 +683,6 @@ xmovie \tab seen x-rated movie in last year \cr
 xnorcsiz \tab expanded n.o.r.c. size code \cr
 yearsjob \tab time at current job \cr
 yearval \tab total dollar value of payments in that year \cr
-}
 }
 }
 \source{
