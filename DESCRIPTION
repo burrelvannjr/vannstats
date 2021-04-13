@@ -1,10 +1,10 @@
 Package: vannstats
-Title: Simplified Statistics for Vann PA 606
-Version: 1.0.3.27
-Description: Simplifies functions assess normality for bivariate and multivariate statistical techniques, including hst(), box(), and qq(). Plots designed to replicate those that would result from similar calls in 'SPSS'. 
+Title: Simplified Statistics for PA 606
+Version: 1.0.4.5
+Description: Simplifies functions assess normality for bivariate and multivariate statistical techniques, including hst(), box(), and qq(). Plots designed to replicate those that would result from similar calls in 'SPSS'. Also includes simplified formulae, such as mode(), scatter(), and ow.anova().
 Depends:
     R (>= 3.2.3)
-Imports: MASS, dplyr, ggplot2, rlang, tidyverse, car, purrr, stats, graphics
+Imports: MASS, dplyr, ggplot2, rlang, tidyverse, car, purrr, stats, graphics, gplots
 License: GPL-3
 LazyData: true
 NeedsCompilation: no
