@@ -16,8 +16,9 @@ residplot <- function(df, formula){
   y <- get.vars(formula, data = df)[1]
   main <- paste0("Residual Plot Predicting ", deparse(substitute(y)))
   reg <- lm(formula, data=df)
-  df$predicted <- predict(reg)
-  df$residuals <- residuals(reg)
-  plot(df$predicted, df$residuals, xlab="Predicted Y Value", ylab="Residuals", main=main)
+  predicted <- predict(reg)
+  residuals <- residuals(reg)
+  df2 <- data.frame(predicted,residuals)
+  plot(df2$predicted, df2$residuals, xlab="Predicted Y Value", ylab="Residuals", main=main)
   abline(0, 0)
 }
