@@ -19,3 +19,5 @@ Authors@R:
 RoxygenNote: 7.3.3
 Author: Burrel Vann Jr [aut, cre] (<https://orcid.org/0000-0003-3066-5815>)
 Maintainer: Burrel Vann Jr <bvannjr@sdsu.edu>
+URL: https://github.com/burrelvannjr/vannstats
+BugReports: https://github.com/burrelvannjr/vannstats/issues
