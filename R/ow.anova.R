@@ -9,11 +9,12 @@
 #' @param hsd logical (default set to \code{F}). When set to \code{hsd = T}, will return results of Tukey's Honestly Significant Difference Post-Hoc Comparisons Test.
 #' @param plot logical (default set to \code{F}). When set to \code{plot = T}, will return a means plot with 95 percent confidence intervals, broken out by each group (\code{by1}).
 #' @return This function returns the summary results table for a one-way ANOVA, examining mean differences in \code{var1} from data frame \code{df}, across \code{by1} groups.
+#' @export
 #' @examples
 #' data <- mtcars
 #'
-#' ow.anova(data,mpg,cyl,plot=TRUE)
-#' @export
+#' ow <- ow.anova(data,mpg,cyl,plot=TRUE)
+#' summary(ow)
 
 ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
   #options(scipen=999)
@@ -40,7 +41,7 @@ ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
     #model <- summary(aov(eval(substitute(var1), df) ~ eval(substitute(by1), df)))
     ##rownames(model[[1]]) <- c(deparse(substitute(by1)), "Residuals")
     #rownames(model[[1]]) <- c(btwn, witn)
-    {suppressWarnings(plotmeans(eval(substitute(var1), df) ~ eval(substitute(by1), df), main = "Plot of Group Means with 95% CI", xlab = labx, ylab = laby))}
+    {suppressWarnings(plotmeans(eval(substitute(var1), df) ~ eval(substitute(by1), df), main = "Plot of Group Means with 95% CI", xlab = labx, ylab = laby, connect = FALSE))}
   }
 
   if(hsd==TRUE){
@@ -68,7 +69,7 @@ ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
 
   return.obj <- list(call = match.call(), results = model2, post_hoc = post_hoc#, comparison = compare.name
                      )
-  class(return.obj) <- "summary.ow.anova"
+  class(return.obj) <- "oneway"
   return.obj
   #return(model2)
 }
