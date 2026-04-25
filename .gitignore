@@ -4,7 +4,7 @@
 .Ruserdata
 .Rproj.user/
 vannstats.Rproj
-docs
+#docs
 .httr-oauth
 .DS_Store
 .quarto
