@@ -2,7 +2,9 @@
 
 ## Overview
 
-**vannstats** is an R package designed to simplify the statistical
+------------------------------------------------------------------------
+
+`vannstats` is an R package designed to simplify the statistical
 workflows commonly used in undergraduate and graduate-level social
 science courses — particularly those transitioning from SPSS to R. The
 package provides intuitive wrappers for normality diagnostics,
@@ -13,9 +15,9 @@ Whether you are assessing distributional assumptions, running crosstabs,
 computing correlations, or fitting ANOVA models, `vannstats` reduces the
 complexity of base R syntax into concise, readable function calls.
 
-------------------------------------------------------------------------
-
 ## Installation
+
+------------------------------------------------------------------------
 
 Install the released version from CRAN:
 
@@ -29,9 +31,9 @@ Then load the package:
 library(vannstats)
 ```
 
-------------------------------------------------------------------------
-
 ## Functions
+
+------------------------------------------------------------------------
 
 ### Diagnostic Plots
 
@@ -73,9 +75,9 @@ library(vannstats)
 | [`revcode()`](reference/revcode.md)                     | Reverse-codes a scale variable                                                   |
 | [`stata.plm.margins()`](reference/stata.plm.margins.md) | Predictive margins from a panel linear model, mirroring STATA’s `margins` output |
 
-------------------------------------------------------------------------
-
 ## Examples
+
+------------------------------------------------------------------------
 
 ### Histogram
 
@@ -154,9 +156,9 @@ data <- mtcars
 residplot(data, mpg ~ wt + cyl)
 ```
 
-------------------------------------------------------------------------
-
 ## Included Datasets
+
+------------------------------------------------------------------------
 
 `vannstats` ships with several built-in datasets useful for teaching and
 demonstration purposes:
@@ -169,16 +171,14 @@ demonstration purposes:
 | `howell_aids_long` | Howell Student AIDS Knowledge Data in long format                                                                                                   |
 | `Defendants2025`   | Simulated data representing individual defendants at the Richard J. Donovan Correctional Facility, San Diego, CA (1,738 observations, 11 variables) |
 
-------------------------------------------------------------------------
-
 ## Dependencies
+
+------------------------------------------------------------------------
 
 `vannstats` builds on a suite of well-established R packages including
 `ggplot2`, `dplyr`, `tidyverse`, `car`, `rstatix`, `plm`, `purrr`,
 `gplots`, `rlang`, `stringr`, `MASS`, `formula.tools`, `gdata`, and
 `stats`.
-
-------------------------------------------------------------------------
 
 # Package index
 
