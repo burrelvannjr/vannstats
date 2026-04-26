@@ -22,13 +22,19 @@
 
 ## Overview
 
-**vannstats** is an R package designed to simplify the statistical workflows commonly used in undergraduate and graduate-level social science courses — particularly those transitioning from SPSS to R. The package provides intuitive wrappers for normality diagnostics, descriptive statistics, bivariate analyses, and multivariate techniques, producing output that mirrors the look and feel of SPSS results.
+---
+
+`vannstats` is an R package designed to simplify the statistical workflows commonly used in undergraduate and graduate-level social science courses — particularly those transitioning from SPSS to R. The package provides intuitive wrappers for normality diagnostics, descriptive statistics, bivariate analyses, and multivariate techniques, producing output that mirrors the look and feel of SPSS results.
 
 Whether you are assessing distributional assumptions, running crosstabs, computing correlations, or fitting ANOVA models, `vannstats` reduces the complexity of base R syntax into concise, readable function calls.
 
----
+<!--
+--- this is a line H
+-->
 
 ## Installation
+
+---
 
 Install the released version from CRAN:
 
@@ -42,9 +48,11 @@ Then load the package:
 library(vannstats)
 ```
 
----
+
 
 ## Functions
+
+---
 
 ### Diagnostic Plots
 
@@ -86,9 +94,12 @@ library(vannstats)
 | `revcode()` | Reverse-codes a scale variable |
 | `stata.plm.margins()` | Predictive margins from a panel linear model, mirroring STATA's `margins` output |
 
----
+
+
 
 ## Examples
+
+---
 
 ### Histogram
 
@@ -167,9 +178,12 @@ data <- mtcars
 residplot(data, mpg ~ wt + cyl)
 ```
 
----
+
+
 
 ## Included Datasets
+
+---
 
 `vannstats` ships with several built-in datasets useful for teaching and demonstration purposes:
 
@@ -181,11 +195,17 @@ residplot(data, mpg ~ wt + cyl)
 | `howell_aids_long` | Howell Student AIDS Knowledge Data in long format |
 | `Defendants2025` | Simulated data representing individual defendants at the Richard J. Donovan Correctional Facility, San Diego, CA (1,738 observations, 11 variables) |
 
----
+
+
 
 ## Dependencies
 
+---
+
 `vannstats` builds on a suite of well-established R packages including `ggplot2`, `dplyr`, `tidyverse`, `car`, `rstatix`, `plm`, `purrr`, `gplots`, `rlang`, `stringr`, `MASS`, `formula.tools`, `gdata`, and `stats`.
 
----
+
+
+
+
 

@@ -167,5 +167,6 @@ outline.color = "white",lab = TRUE,digits = 3)
 #> ℹ Please use tidy evaluation idioms with `aes()`.
 #> ℹ See also `vignette("ggplot2-in-packages")` for more information.
 #> ℹ The deprecated feature was likely used in the vannstats package.
-#>   Please report the issue to the authors.
+#>   Please report the issue at
+#>   <https://github.com/burrelvannjr/vannstats/issues>.
 ```

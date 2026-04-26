@@ -43,6 +43,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/burrelvannjr/vannstats/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -66,24 +67,28 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><strong>vannstats</strong> is an R package designed to simplify the statistical workflows commonly used in undergraduate and graduate-level social science courses — particularly those transitioning from SPSS to R. The package provides intuitive wrappers for normality diagnostics, descriptive statistics, bivariate analyses, and multivariate techniques, producing output that mirrors the look and feel of SPSS results.</p>
-<p>Whether you are assessing distributional assumptions, running crosstabs, computing correlations, or fitting ANOVA models, <code>vannstats</code> reduces the complexity of base R syntax into concise, readable function calls.</p>
 <hr>
+<p><code>vannstats</code> is an R package designed to simplify the statistical workflows commonly used in undergraduate and graduate-level social science courses — particularly those transitioning from SPSS to R. The package provides intuitive wrappers for normality diagnostics, descriptive statistics, bivariate analyses, and multivariate techniques, producing output that mirrors the look and feel of SPSS results.</p>
+<p>Whether you are assessing distributional assumptions, running crosstabs, computing correlations, or fitting ANOVA models, <code>vannstats</code> reduces the complexity of base R syntax into concise, readable function calls.</p>
+<!--
+--- this is a line H
+-->
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
+<hr>
 <p>Install the released version from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"vannstats"</span><span class="op">)</span></span></code></pre></div>
 <p>Then load the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">vannstats</span><span class="op">)</span></span></code></pre></div>
-<hr>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/burrelvannjr/vannstats" class="external-link">vannstats</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
+<hr>
 <div class="section level3">
 <h3 id="diagnostic-plots">Diagnostic Plots<a class="anchor" aria-label="anchor" href="#diagnostic-plots"></a>
 </h3>
@@ -227,12 +232,12 @@
 </tr>
 </tbody>
 </table>
-<hr>
 </div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
+<hr>
 <div class="section level3">
 <h3 id="histogram">Histogram<a class="anchor" aria-label="anchor" href="#histogram"></a>
 </h3>
@@ -309,12 +314,12 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="fu"><a href="reference/residplot.html">residplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span><span class="op">)</span></span></code></pre></div>
-<hr>
 </div>
 </div>
 <div class="section level2">
 <h2 id="included-datasets">Included Datasets<a class="anchor" aria-label="anchor" href="#included-datasets"></a>
 </h2>
+<hr>
 <p><code>vannstats</code> ships with several built-in datasets useful for teaching and demonstration purposes:</p>
 <table class="table">
 <colgroup>
@@ -348,19 +353,20 @@
 </tr>
 </tbody>
 </table>
-<hr>
 </div>
 <div class="section level2">
 <h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h2>
-<p><code>vannstats</code> builds on a suite of well-established R packages including <code>ggplot2</code>, <code>dplyr</code>, <code>tidyverse</code>, <code>car</code>, <code>rstatix</code>, <code>plm</code>, <code>purrr</code>, <code>gplots</code>, <code>rlang</code>, <code>stringr</code>, <code>MASS</code>, <code>formula.tools</code>, <code>gdata</code>, and <code>stats</code>.</p>
 <hr>
+<p><code>vannstats</code> builds on a suite of well-established R packages including <code>ggplot2</code>, <code>dplyr</code>, <code>tidyverse</code>, <code>car</code>, <code>rstatix</code>, <code>plm</code>, <code>purrr</code>, <code>gplots</code>, <code>rlang</code>, <code>stringr</code>, <code>MASS</code>, <code>formula.tools</code>, <code>gdata</code>, and <code>stats</code>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=vannstats" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/burrelvannjr/vannstats/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/burrelvannjr/vannstats/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
