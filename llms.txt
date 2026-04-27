@@ -2,8 +2,6 @@
 
 ## Overview
 
-------------------------------------------------------------------------
-
 `vannstats` is an R package designed to simplify the statistical
 workflows commonly used in undergraduate and graduate-level social
 science courses — particularly those transitioning from SPSS to R. The
