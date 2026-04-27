@@ -13,7 +13,8 @@ summary(object, ...)
 
 - object:
 
-  Object returned by [`ow.anova`](ow.anova.md).
+  Object returned by
+  [`ow.anova`](https://burrelvannjr.github.io/vannstats/reference/ow.anova.md).
 
 - ...:
 

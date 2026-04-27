@@ -13,7 +13,8 @@ summary(object, ...)
 
 - object:
 
-  Object returned by [`chi.sq`](chi.sq.md).
+  Object returned by
+  [`chi.sq`](https://burrelvannjr.github.io/vannstats/reference/chi.sq.md).
 
 - ...:
 
