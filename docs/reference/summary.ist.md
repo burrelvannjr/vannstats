@@ -13,7 +13,8 @@ summary(object, ...)
 
 - object:
 
-  Object returned by [`is.t`](is.t.md).
+  Object returned by
+  [`is.t`](https://burrelvannjr.github.io/vannstats/reference/is.t.md).
 
 - ...:
 
