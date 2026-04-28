@@ -14,7 +14,7 @@ summary(object, ...)
 - object:
 
   Object returned by
-  [`ps.t`](https://burrelvannjr.github.io/vannstats/reference/ps.t.md).
+  [`ps.t`](https://vannstats.burrelvannjr.com/reference/ps.t.md).
 
 - ...:
 
