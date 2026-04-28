@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2026-04-28T17:32Z
+last_built: 2026-04-28T17:34Z
 urls:
   reference: https://vannstats.burrelvannjr.com/reference
   article: https://vannstats.burrelvannjr.com/articles
