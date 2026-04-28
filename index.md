@@ -35,43 +35,43 @@ library(vannstats)
 
 ### Diagnostic Plots
 
-| Function                                                                         | Description                                                                |
-|----------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| [`hst()`](https://burrelvannjr.github.io/vannstats/reference/hst.md)             | Histogram — can be parsed by up to 2 grouping variables                    |
-| [`box()`](https://burrelvannjr.github.io/vannstats/reference/box.md)             | Box-and-Whisker plot — can be parsed by up to 2 grouping variables         |
-| [`qq()`](https://burrelvannjr.github.io/vannstats/reference/qq.md)               | Q-Q (Quantile-Quantile) plot — can be parsed by up to 2 grouping variables |
-| [`residplot()`](https://burrelvannjr.github.io/vannstats/reference/residplot.md) | Residuals plot for a regression equation                                   |
-| [`scatter()`](https://burrelvannjr.github.io/vannstats/reference/scatter.md)     | Scatterplot with an overlaid fit line                                      |
-| [`bar.chart()`](https://burrelvannjr.github.io/vannstats/reference/bar.chart.md) | Bar chart for a given variable                                             |
+| Function                                                                   | Description                                                                |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [`hst()`](https://vannstats.burrelvannjr.com/reference/hst.md)             | Histogram — can be parsed by up to 2 grouping variables                    |
+| [`box()`](https://vannstats.burrelvannjr.com/reference/box.md)             | Box-and-Whisker plot — can be parsed by up to 2 grouping variables         |
+| [`qq()`](https://vannstats.burrelvannjr.com/reference/qq.md)               | Q-Q (Quantile-Quantile) plot — can be parsed by up to 2 grouping variables |
+| [`residplot()`](https://vannstats.burrelvannjr.com/reference/residplot.md) | Residuals plot for a regression equation                                   |
+| [`scatter()`](https://vannstats.burrelvannjr.com/reference/scatter.md)     | Scatterplot with an overlaid fit line                                      |
+| [`bar.chart()`](https://vannstats.burrelvannjr.com/reference/bar.chart.md) | Bar chart for a given variable                                             |
 
 ### Descriptive Statistics
 
-| Function                                                                         | Description                                                                 |
-|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| [`univ.desc()`](https://burrelvannjr.github.io/vannstats/reference/univ.desc.md) | Univariate descriptive statistics, optionally parsed by a grouping variable |
-| [`mode()`](https://burrelvannjr.github.io/vannstats/reference/mode.md)           | Mode of a variable                                                          |
-| [`z.calc()`](https://burrelvannjr.github.io/vannstats/reference/z.calc.md)       | Z-score for a given value relative to a variable’s mean and SD              |
-| [`se()`](https://burrelvannjr.github.io/vannstats/reference/se.md)               | Standard error of a variable                                                |
-| `ci()`                                                                           | Confidence interval for a variable at a specified confidence level          |
+| Function                                                                   | Description                                                                 |
+|----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [`univ.desc()`](https://vannstats.burrelvannjr.com/reference/univ.desc.md) | Univariate descriptive statistics, optionally parsed by a grouping variable |
+| [`mode()`](https://vannstats.burrelvannjr.com/reference/mode.md)           | Mode of a variable                                                          |
+| [`z.calc()`](https://vannstats.burrelvannjr.com/reference/z.calc.md)       | Z-score for a given value relative to a variable’s mean and SD              |
+| [`se()`](https://vannstats.burrelvannjr.com/reference/se.md)               | Standard error of a variable                                                |
+| `ci()`                                                                     | Confidence interval for a variable at a specified confidence level          |
 
 ### Bivariate Comparisons & Analyses
 
-| Function                                                                       | Description                                                                   |
-|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| [`tab()`](https://burrelvannjr.github.io/vannstats/reference/tab.md)           | Crosstab of observed and expected frequencies for two categorical variables   |
-| [`chi.sq()`](https://burrelvannjr.github.io/vannstats/reference/chi.sq.md)     | Pearson’s Chi-Square test (with optional post-hoc comparisons and Cramér’s V) |
-| [`p.corr()`](https://burrelvannjr.github.io/vannstats/reference/p.corr.md)     | Pearson’s Product-Moment Correlation Coefficient                              |
-| [`cormat()`](https://burrelvannjr.github.io/vannstats/reference/cormat.md)     | Correlation matrix for variables in a formula                                 |
-| [`ow.anova()`](https://burrelvannjr.github.io/vannstats/reference/ow.anova.md) | One-Way ANOVA (with optional Tukey’s HSD post-hoc test and means plot)        |
-| [`rm.anova()`](https://burrelvannjr.github.io/vannstats/reference/rm.anova.md) | One-Way Repeated Measures ANOVA (with sphericity correction and test)         |
+| Function                                                                 | Description                                                                   |
+|--------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| [`tab()`](https://vannstats.burrelvannjr.com/reference/tab.md)           | Crosstab of observed and expected frequencies for two categorical variables   |
+| [`chi.sq()`](https://vannstats.burrelvannjr.com/reference/chi.sq.md)     | Pearson’s Chi-Square test (with optional post-hoc comparisons and Cramér’s V) |
+| [`p.corr()`](https://vannstats.burrelvannjr.com/reference/p.corr.md)     | Pearson’s Product-Moment Correlation Coefficient                              |
+| [`cormat()`](https://vannstats.burrelvannjr.com/reference/cormat.md)     | Correlation matrix for variables in a formula                                 |
+| [`ow.anova()`](https://vannstats.burrelvannjr.com/reference/ow.anova.md) | One-Way ANOVA (with optional Tukey’s HSD post-hoc test and means plot)        |
+| [`rm.anova()`](https://vannstats.burrelvannjr.com/reference/rm.anova.md) | One-Way Repeated Measures ANOVA (with sphericity correction and test)         |
 
 ### Data Management
 
-| Function                                                                                         | Description                                                                      |
-|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| [`dummy()`](https://burrelvannjr.github.io/vannstats/reference/dummy.md)                         | Creates dummy-coded columns for the values of a categorical variable             |
-| [`revcode()`](https://burrelvannjr.github.io/vannstats/reference/revcode.md)                     | Reverse-codes a scale variable                                                   |
-| [`stata.plm.margins()`](https://burrelvannjr.github.io/vannstats/reference/stata.plm.margins.md) | Predictive margins from a panel linear model, mirroring STATA’s `margins` output |
+| Function                                                                                   | Description                                                                      |
+|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| [`dummy()`](https://vannstats.burrelvannjr.com/reference/dummy.md)                         | Creates dummy-coded columns for the values of a categorical variable             |
+| [`revcode()`](https://vannstats.burrelvannjr.com/reference/revcode.md)                     | Reverse-codes a scale variable                                                   |
+| [`stata.plm.margins()`](https://vannstats.burrelvannjr.com/reference/stata.plm.margins.md) | Predictive margins from a panel linear model, mirroring STATA’s `margins` output |
 
 ## Examples
 
