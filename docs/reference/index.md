@@ -6,6 +6,10 @@
   : Defendants, 2025 (Individual-Level)
 - [`GSS2014`](https://vannstats.burrelvannjr.com/reference/GSS2014.md) :
   General Social Survey, 2014
+- [`GSS2022`](https://vannstats.burrelvannjr.com/reference/GSS2022.md) :
+  General Social Survey, 2022
+- [`GSS2024`](https://vannstats.burrelvannjr.com/reference/GSS2024.md) :
+  General Social Survey, 2024
 - [`UCR2015`](https://vannstats.burrelvannjr.com/reference/UCR2015.md) :
   Uniform Crime Reports, 2015 (County-Level)
 - [`WBBN2019`](https://vannstats.burrelvannjr.com/reference/WBBN2019.md)

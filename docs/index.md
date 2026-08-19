@@ -20,12 +20,14 @@ complexity of base R syntax into concise, readable function calls.
 Install the released version from CRAN:
 
 ``` r
+
 install.packages("vannstats")
 ```
 
 Then load the package:
 
 ``` r
+
 library(vannstats)
 ```
 
@@ -80,6 +82,7 @@ library(vannstats)
 ### Histogram
 
 ``` r
+
 data <- mtcars
 hst(data, mpg, cyl)
 ```
@@ -87,6 +90,7 @@ hst(data, mpg, cyl)
 ### Box-and-Whisker Plot
 
 ``` r
+
 data <- mtcars
 box(data, mpg, cyl)
 ```
@@ -94,6 +98,7 @@ box(data, mpg, cyl)
 ### Q-Q Plot
 
 ``` r
+
 data <- mtcars
 qq(data, mpg, cyl)
 ```
@@ -101,6 +106,7 @@ qq(data, mpg, cyl)
 ### Crosstab
 
 ``` r
+
 data <- mtcars
 tab(data, vs, am)
 ```
@@ -108,6 +114,7 @@ tab(data, vs, am)
 ### Chi-Square Test
 
 ``` r
+
 data <- mtcars
 x2 <- chi.sq(data, vs, am)
 summary(x2)
@@ -116,6 +123,7 @@ summary(x2)
 ### Pearson’s Correlation
 
 ``` r
+
 data <- mtcars
 p.corr(data, mpg, wt)
 ```
@@ -123,6 +131,7 @@ p.corr(data, mpg, wt)
 ### Correlation Matrix
 
 ``` r
+
 data <- mtcars
 cormat(data, mpg ~ wt + am)
 ```
@@ -130,6 +139,7 @@ cormat(data, mpg ~ wt + am)
 ### One-Way ANOVA
 
 ``` r
+
 data <- mtcars
 ow <- ow.anova(data, mpg, cyl)
 summary(ow)
@@ -138,6 +148,7 @@ summary(ow)
 ### Repeated Measures ANOVA
 
 ``` r
+
 # Wide format
 data <- howell_aids_wide
 rm.anova(data, student, c("t1", "t2", "t3"))
@@ -150,6 +161,7 @@ rm.anova(data2, student, time, scores = knowledge)
 ### Residuals Plot
 
 ``` r
+
 data <- mtcars
 residplot(data, mpg ~ wt + cyl)
 ```

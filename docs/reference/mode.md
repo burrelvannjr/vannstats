@@ -26,6 +26,7 @@ list of values.
 ## Examples
 
 ``` r
+
 data <- mtcars
 
 mode(data$mpg)
