@@ -1,0 +1,995 @@
+#' General Social Survey, 2024
+#'
+#' These data come from the \emph{General Social Survey}, administered in 2024. These data were collected by the National Opinion Research Center (NORC) at the University of Chicago. The observations represent individuals' responses to survey questions. The full data set -- The General Social Survey Cumulative Data (1972-2024, release 3) -- was generously provided through the \code{gssr} package. Further information about the \code{GSS2024} data set (including question text) can be found in the GSS 2024 Codebook at: \url{https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS\%202024\%20Codebook\%20R3.pdf}.
+#'
+#' @format A data frame with 3986 observations and 983 variables.
+#' \tabular{ll}{ \cr
+#' year \tab GSS year for this respondent \cr
+#' id \tab Respondent id number \cr
+#' wrkstat \tab labor force status \cr
+#' hrs1 \tab number of hours worked last week \cr
+#' hrs2 \tab number of hours usually work a week \cr
+#' evwork \tab ever work as long as one year \cr
+#' wrkslf \tab r self-emp or works for somebody \cr
+#' occ10 \tab r's census occupation code (2010) \cr
+#' prestg10 \tab r's occupational prestige score (2010) \cr
+#' prestg105plus \tab R's occupational prestige score using threshold method (2010) \cr
+#' indus10 \tab r's industry code (naics 2007) \cr
+#' marital \tab marital status \cr
+#' martype \tab marital type \cr
+#' divorce \tab ever been divorced or separated \cr
+#' widowed \tab ever been widowed \cr
+#' spwrksta \tab spouse labor force status \cr
+#' sphrs1 \tab number of hrs spouse worked last week \cr
+#' sphrs2 \tab no. of hrs spouse usually works a week \cr
+#' spevwork \tab spouse ever work as long as a year \cr
+#' cowrksta \tab partner's labor force status \cr
+#' cowrkslf \tab partner self-emp. or works for somebody else \cr
+#' coevwork \tab partner ever work as long as a year \cr
+#' cohrs1 \tab number of hours partner worked last week \cr
+#' cohrs2 \tab no. of hours partner usually works a week \cr
+#' spwrkslf \tab spouse self-emp. or works for somebody \cr
+#' spocc10 \tab spouse census occupation code (2010) \cr
+#' sppres10 \tab Spouse occupational prestige score (2010) \cr
+#' sppres105plus \tab Spouse occupational prestige score using threshold method (2010) \cr
+#' spind10 \tab spouse's industry code (naics 2007) \cr
+#' coocc10 \tab partner's census occupation code (2010) \cr
+#' coind10 \tab partner's industry code (2010) \cr
+#' pawrkslf \tab Father (or oldest same-sex parent) self-emp. or worked for somebody \cr
+#' paocc10 \tab father's census occupation code (2010) \cr
+#' papres10 \tab father's occupational prestige score (2010) \cr
+#' papres105plus \tab Father's occupational prestige score using threshold method (2010) \cr
+#' paind10 \tab father's industry code (naics 2007) \cr
+#' mawrkslf \tab Mother (or youngest same-sex parent) self-emp. or worked for somebody \cr
+#' maocc10 \tab mothers census occupation code (2010) \cr
+#' mapres10 \tab mothers occupational prestige score (2010) \cr
+#' mapres105plus \tab Mothers occupational prestige score using threshold method (2010) \cr
+#' maind10 \tab mothers industry code (naics 2007) \cr
+#' sibs \tab number of brothers and sisters \cr
+#' childs \tab number of children \cr
+#' age \tab age of respondent \cr
+#' agekdbrn \tab r's age when 1st child born \cr
+#' educ \tab highest year of school completed \cr
+#' paeduc \tab Highest year school completed, father (or oldest same-sex parent) \cr
+#' maeduc \tab Highest year school completed, mother (or youngest same-sex parent) \cr
+#' speduc \tab highest year school completed, spouse \cr
+#' coeduc \tab highest year school completed, partner \cr
+#' codeg \tab partner's highest degree \cr
+#' degree \tab r's highest degree \cr
+#' padeg \tab Father's (or oldest same-sex parent's) highest degree \cr
+#' madeg \tab Mother's (or youngest same-sex parent's) highest degree \cr
+#' spdeg \tab spouse's highest degree \cr
+#' major1 \tab college major 1 \cr
+#' major2 \tab college major 2 \cr
+#' dipged \tab diploma, ged, or other \cr
+#' sex \tab respondents sex \cr
+#' race \tab race of respondent \cr
+#' res16 \tab type of place lived in when 16 yrs old \cr
+#' reg16 \tab region of residence, age 16 \cr
+#' mobile16 \tab geographic mobility since age 16 \cr
+#' family16 \tab living with parents when 16 yrs old \cr
+#' famdif16 \tab reason not living with parents \cr
+#' mawrkgrw \tab Did mother (or youngest same-sex parent) ever work for pay for as long as a year while you were growing up? \cr
+#' incom16 \tab r's family income when 16 yrs old \cr
+#' born \tab was r born in this country \cr
+#' parborn \tab were r's parents born in this country \cr
+#' granborn \tab how many grandparents born outside u.s. \cr
+#' hompop \tab number of persons in household \cr
+#' babies \tab household members less than 6 yrs old \cr
+#' preteen \tab household members 6 thru 12 yrs old \cr
+#' teens \tab household members 13 thru 17 yrs old \cr
+#' adults \tab household members 18 yrs and older \cr
+#' unrelat \tab number in household not related \cr
+#' earnrs \tab how many in family earned money \cr
+#' income \tab total family income \cr
+#' rincome \tab respondents income \cr
+#' income16 \tab total family income \cr
+#' rincom16 \tab respondents income \cr
+#' region \tab region of interview \cr
+#' xnorcsiz \tab expanded norc size code \cr
+#' partyid \tab political party affiliation \cr
+#' vote16 \tab remember if voted in 2016 election \cr
+#' pres16 \tab vote clinton or trump \cr
+#' if16who \tab who you would have voted for \cr
+#' polviews \tab think of self as liberal or conservative \cr
+#' natspac \tab space exploration program \cr
+#' natenvir \tab improving & protecting environment \cr
+#' natheal \tab improving & protecting nations health \cr
+#' natcity \tab solving problems of big cities \cr
+#' natcrime \tab halting rising crime rate \cr
+#' natdrug \tab dealing with drug addiction \cr
+#' nateduc \tab improving nations education system \cr
+#' natrace \tab Improving the conditions of Black people \cr
+#' natarms \tab military, armaments, and defense \cr
+#' nataid \tab foreign aid \cr
+#' natfare \tab welfare \cr
+#' natroad \tab highways and bridges \cr
+#' natsoc \tab social security \cr
+#' natchld \tab assistance for childcare \cr
+#' natsci \tab supporting scientific research \cr
+#' natenrgy \tab developing alternative energy sources \cr
+#' natspacy \tab space exploration:version y \cr
+#' natenviy \tab the environment:version y \cr
+#' nathealy \tab health:version y \cr
+#' natcityy \tab assistance to big cities:version y \cr
+#' natcrimy \tab law enforcement:version y \cr
+#' natdrugy \tab drug rehabilitation:version y \cr
+#' nateducy \tab education:version y \cr
+#' natracey \tab Assistance to Black people: version y \cr
+#' natarmsy \tab national defense:version y \cr
+#' nataidy \tab assistance to other countries:ver y \cr
+#' natfarey \tab assistance to the poor:version y \cr
+#' eqwlth \tab should govt reduce income differences \cr
+#' tax \tab r's federal income tax \cr
+#' spkath \tab allow anti-religionist to speak \cr
+#' colath \tab allow anti-religionist to teach \cr
+#' libath \tab allow anti-religious book in library \cr
+#' spkrac \tab allow racist to speak \cr
+#' colrac \tab allow racist to teach \cr
+#' librac \tab allow racists book in library \cr
+#' spkcom \tab allow communist to speak \cr
+#' colcom \tab should communist teacher be fired \cr
+#' libcom \tab allow communists book in library \cr
+#' spkmslm \tab allow muslim clergymen preaching hatred of the us \cr
+#' colmslm \tab allow anti-american muslim clergymen teaching in college \cr
+#' libmslm \tab allow anti-american muslim clergymen's books in library \cr
+#' cappun \tab favor or oppose death penalty for murder \cr
+#' gunlaw \tab favor or oppose gun permits \cr
+#' courts \tab courts dealing with criminals \cr
+#' grass \tab should marijuana be made legal \cr
+#' relig \tab r's religious preference \cr
+#' denom \tab specific denomination \cr
+#' fund \tab how fundamentalist is r currently \cr
+#' attend \tab how often r attends religious services \cr
+#' reliten \tab strength of affiliation \cr
+#' postlife \tab belief in life after death \cr
+#' pray \tab how often does r pray \cr
+#' relig16 \tab religion in which raised \cr
+#' denom16 \tab denomination in which r was raised \cr
+#' fund16 \tab how fundamentalist was r at age 16 \cr
+#' sprel \tab spouse's religious preference \cr
+#' spden \tab specific denomination, spouse \cr
+#' spfund \tab how fundamentalist is spouse currently \cr
+#' corel \tab partner's religious preference \cr
+#' coden \tab partner's denomination \cr
+#' cofund \tab how fundamentalist is partner's current religion \cr
+#' prayer \tab bible prayer in public schools \cr
+#' bible \tab feelings about the bible \cr
+#' racopen \tab vote on open housing law \cr
+#' raclive \tab any opp. race in neighborhood \cr
+#' affrmact \tab Favor preference in hiring Black people \cr
+#' wrkwayup \tab Black people overcome prejudice without favors \cr
+#' happy \tab general happiness \cr
+#' hapmar \tab happiness of marriage \cr
+#' hapcohab \tab happiness of relt with partner \cr
+#' health \tab condition of health \cr
+#' life \tab is life exciting or dull \cr
+#' helpful \tab people helpful or looking out for selves \cr
+#' fair \tab people fair or try to take advantage \cr
+#' trust \tab can people be trusted \cr
+#' confinan \tab confid in banks & financial institutions \cr
+#' conbus \tab confidence in major companies \cr
+#' conclerg \tab confidence in organized religion \cr
+#' coneduc \tab confidence in education \cr
+#' confed \tab confid. in exec branch of fed govt \cr
+#' conlabor \tab confidence in organized labor \cr
+#' conpress \tab confidence in press \cr
+#' conmedic \tab confidence in medicine \cr
+#' contv \tab confidence in television \cr
+#' conjudge \tab confid. in united states supreme court \cr
+#' consci \tab confidence in scientific community \cr
+#' conlegis \tab confidence in congress \cr
+#' conarmy \tab confidence in military \cr
+#' obey \tab to obey \cr
+#' popular \tab to be well liked or popular \cr
+#' thnkself \tab to think for ones self \cr
+#' workhard \tab to work hard \cr
+#' helpoth \tab to help others \cr
+#' socrel \tab spend evening with relatives \cr
+#' socommun \tab spend evening with neighbor \cr
+#' socfrend \tab spend evening with friends \cr
+#' socbar \tab spend evening at bar \cr
+#' weekswrk \tab weeks r worked last year \cr
+#' partfull \tab was r's work part-time or full-time? \cr
+#' joblose \tab is r likely to lose job \cr
+#' jobfind \tab could r find equally good job \cr
+#' satjob \tab work satisfaction \cr
+#' richwork \tab if rich, continue or stop working \cr
+#' class \tab subjective class identification \cr
+#' rank \tab r's self ranking of social position \cr
+#' satfin \tab satisfaction with financial situation \cr
+#' finalter \tab change in financial situation \cr
+#' finrela \tab opinion of family income \cr
+#' wksub \tab does r or spouse have supervisor \cr
+#' wksubs \tab does supervisor have supervisor \cr
+#' wksub1 \tab does r or spouse or partner have a supervisor \cr
+#' wksubs1 \tab does supervisor have supervisor \cr
+#' wksup \tab does r or spouse supervise anyone \cr
+#' wksups \tab does subordinate supervise anyone \cr
+#' wksup1 \tab does r or spouse or partner supervise anyone \cr
+#' wksups1 \tab does subordinant supervise anyone \cr
+#' unemp \tab ever unemployed in last ten yrs \cr
+#' union \tab does r or spouse belong to union \cr
+#' union1 \tab does r or spouse or partner belong to union \cr
+#' getahead \tab opinion of how people get ahead \cr
+#' parsol \tab r's living standard compared to parents \cr
+#' kidssol \tab r's kids living standard compared to r \cr
+#' fepol \tab women not suited for politics \cr
+#' abdefect \tab strong chance of serious defect \cr
+#' abnomore \tab married--wants no more children \cr
+#' abhlth \tab woman's health seriously endangered \cr
+#' abpoor \tab low income--cant afford more children \cr
+#' abrape \tab pregnant as result of rape \cr
+#' absingle \tab not married \cr
+#' abany \tab abortion if woman wants for any reason \cr
+#' chldidel \tab ideal number of children \cr
+#' pillok \tab birth control to teenagers 14-16 \cr
+#' sexeduc \tab sex education in public schools \cr
+#' divlaw \tab divorce laws \cr
+#' premarsx \tab sex before marriage \cr
+#' teensex \tab sex before marriage:teens 14-16 \cr
+#' xmarsex \tab sex with person other than spouse \cr
+#' homosex \tab homosexual sex relations \cr
+#' pornlaw \tab feelings about pornography laws \cr
+#' xmovie \tab seen x-rated movie in last year \cr
+#' spanking \tab favor spanking to discipline child \cr
+#' letdie1 \tab allow incurable patients to die \cr
+#' suicide1 \tab suicide if incurable disease \cr
+#' suicide2 \tab suicide if bankrupt \cr
+#' suicide4 \tab suicide if tired of living \cr
+#' polhitok \tab ever approve of police striking citizen \cr
+#' polabuse \tab citizen said vulgar or obscene things \cr
+#' polmurdr \tab citizen questioned as murder suspect \cr
+#' polescap \tab citizen attempting to escape custody \cr
+#' polattak \tab citizen attacking policeman with fists \cr
+#' fear \tab afraid to walk at night in neighborhood \cr
+#' owngun \tab have gun in home \cr
+#' pistol \tab pistol or revolver in home \cr
+#' shotgun \tab shotgun in home \cr
+#' rifle \tab rifle in home \cr
+#' rowngun \tab does gun belong to r \cr
+#' hunt \tab does r or spouse hunt \cr
+#' hunt1 \tab does r or spouse or partner hunt \cr
+#' news \tab how often does r read newspaper \cr
+#' tvhours \tab hours per day watching tv \cr
+#' phone \tab does r have telephone \cr
+#' coop \tab r's attitude toward interview \cr
+#' comprend \tab r's understanding of questions \cr
+#' form \tab form of split questionnaire asked \cr
+#' fechld \tab mother working doesn't hurt children \cr
+#' fepresch \tab preschool kids suffer if mother works \cr
+#' fefam \tab better for man to work, woman tend home \cr
+#' racdif1 \tab differences due to discrimination \cr
+#' racdif2 \tab differences due to in-born learning ability \cr
+#' racdif3 \tab differences due to lack of education \cr
+#' racdif4 \tab differences due to lack of will \cr
+#' helppoor \tab should govt improve standard of living? \cr
+#' helpnot \tab should govt do more or less? \cr
+#' helpsick \tab should govt help pay for medical care? \cr
+#' helpblk \tab Should govt aid Black people? \cr
+#' numgiven \tab number of persons mentioned \cr
+#' race1 \tab race of person number 1 \cr
+#' race2 \tab race of person number 2 \cr
+#' race3 \tab race of person number 3 \cr
+#' race4 \tab race of person number 4 \cr
+#' race5 \tab race of person number 5 \cr
+#' spouse1 \tab person #1 is r's spouse \cr
+#' spouse2 \tab person #2 is r's spouse \cr
+#' spouse3 \tab person #3 is r's spouse \cr
+#' spouse4 \tab person #4 is r's spouse \cr
+#' spouse5 \tab person #5 is r's spouse \cr
+#' parent1 \tab person #1 is r's parent \cr
+#' parent2 \tab person #2 is r's parent \cr
+#' parent3 \tab person #3 is r's parent \cr
+#' parent4 \tab person #4 is r's parent \cr
+#' parent5 \tab person #5 is r's parent \cr
+#' child1 \tab person #1 is r's child \cr
+#' child2 \tab person #2 is r's child \cr
+#' child3 \tab person #3 is r's child \cr
+#' child4 \tab person #4 is r's child \cr
+#' child5 \tab person #5 is r's child \cr
+#' othfam1 \tab person #1 is r's family member \cr
+#' othfam2 \tab person #2 is r's family member \cr
+#' othfam3 \tab person #3 is r's family member \cr
+#' othfam4 \tab person #4 is r's family member \cr
+#' othfam5 \tab person #5 is r's family member \cr
+#' cowork1 \tab person #1 is r's coworker \cr
+#' cowork2 \tab person #2 is r's coworker \cr
+#' cowork3 \tab person #3 is r's coworker \cr
+#' cowork4 \tab person #4 is r's coworker \cr
+#' cowork5 \tab person #5 is r's coworker \cr
+#' memgrp1 \tab person #1 is member of r's group \cr
+#' memgrp2 \tab person #2 is member of r's group \cr
+#' memgrp3 \tab person #3 is member of r's group \cr
+#' memgrp4 \tab person #4 is member of r's group \cr
+#' memgrp5 \tab person #5 is member of r's group \cr
+#' neighbr1 \tab person #1 is r's neighbor \cr
+#' neighbr2 \tab person #2 is r's neighbor \cr
+#' neighbr3 \tab person #3 is r's neighbor \cr
+#' neighbr4 \tab person #4 is r's neighbor \cr
+#' neighbr5 \tab person #5 is r's neighbor \cr
+#' friend1 \tab person #1 is r's friend \cr
+#' friend2 \tab person #2 is r's friend \cr
+#' friend3 \tab person #3 is r's friend \cr
+#' friend4 \tab person #4 is r's friend \cr
+#' friend5 \tab person #5 is r's friend \cr
+#' advisor1 \tab person #1 is r's advisor \cr
+#' advisor2 \tab person #2 is r's advisor \cr
+#' advisor3 \tab person #3 is r's advisor \cr
+#' advisor4 \tab person #4 is r's advisor \cr
+#' advisor5 \tab person #5 is r's advisor \cr
+#' other1 \tab person #1 is other type of acquaintance \cr
+#' other2 \tab person #2 is other type of acquaintance \cr
+#' other3 \tab person #3 is other type of acquaintance \cr
+#' other4 \tab person #4 is other type of acquaintance \cr
+#' other5 \tab person #5 is other type of acquaintance \cr
+#' talkto1 \tab how often does r talk to person #1? \cr
+#' talkto2 \tab how often does r talk to person #2? \cr
+#' talkto3 \tab how often does r talk to person #3? \cr
+#' talkto4 \tab how often does r talk to person #4? \cr
+#' talkto5 \tab how often does r talk to person #5? \cr
+#' god \tab r's confidence in the existence of god \cr
+#' reborn \tab has r ever had a 'born again' experience \cr
+#' wlthwhts \tab rich - poor \cr
+#' wlthblks \tab rich - poor \cr
+#' wlthhsps \tab rich - poor \cr
+#' workwhts \tab hard working - lazy \cr
+#' workblks \tab hard working - lazy \cr
+#' workhsps \tab hard working -lazy \cr
+#' liveblks \tab neighborhood half black \cr
+#' marblk \tab close relative marry Black person \cr
+#' marasian \tab close relative marry asian \cr
+#' marhisp \tab close relative marry hispanic \cr
+#' marwht \tab r favor close relative marrying white person \cr
+#' discaff \tab whites hurt by aff. action \cr
+#' yousup \tab how many people do you supervise directly \cr
+#' spwksup \tab does spouse supervise anyone \cr
+#' united \tab americans united or divided on values \cr
+#' impfinan \tab imp to r of financial security \cr
+#' impmar \tab imp to r of being married \cr
+#' impkids \tab imp to r of having children \cr
+#' impgod \tab imp to r of having faith in god \cr
+#' impthngs \tab imp to r of having nice things \cr
+#' impcultr \tab imp to r of being cultured \cr
+#' impjob \tab imp to r of having a fulfilling job \cr
+#' impself \tab imp to r of being self-sufficient \cr
+#' fejobaff \tab for or against preferential hiring of women \cr
+#' refpromo \tab refuse a job promotion? \cr
+#' refmorwk \tab take on additional paid work? \cr
+#' workless \tab cut back on your work? \cr
+#' noathome \tab miss a family occasion or holiday? \cr
+#' nonurse \tab unable to care for a sick child-relative? \cr
+#' discaffm \tab a man won't get a job or promotion \cr
+#' discaffw \tab a woman won't get a job or promotion \cr
+#' fehire \tab should hire and promote women \cr
+#' hapfeel \tab felt happy? \cr
+#' ashamed \tab felt ashamed of something you'd done? \cr
+#' fearful \tab felt fearful about something \cr
+#' angry \tab felt angry at someone? \cr
+#' proud \tab felt proud of something you'd done? \cr
+#' vigversn \tab  vignette version number \cr
+#' seriousp \tab how serious x s situation is \cr
+#' charactr \tab how likely x s situation caused by bad character \cr
+#' imbalnce \tab how likely x s situation caused by imbalance in brain \cr
+#' wayraise \tab how likely x s situation caused by the way raised \cr
+#' stresses \tab how likely x s situation caused by stress \cr
+#' genetics \tab how likely x s situation caused by genetic problem \cr
+#' godswill \tab how likely x s situation caused by god s will \cr
+#' upsdowns \tab how likely x is experiencing normal ups-and-downs of life \cr
+#' breakdwn \tab how likely x is experiencing nervous breakdown \cr
+#' mentlill \tab how likely x is experiencing mental illness \cr
+#' physill \tab how likely x is experiencing physical illness \cr
+#' viglabel \tab how likely x is experiencing vignettes \cr
+#' dectreat \tab how able is x to decide receive treatment \cr
+#' decmoney \tab how able is x to decide managing own money \cr
+#' imprvown \tab how likely x s situation will improve on its own \cr
+#' imprvtrt \tab how likely x s situation will improve with treatment \cr
+#' vignei \tab how willing r would have x as a neighbor \cr
+#' vigsoc \tab how willing r would spend time socializing with x \cr
+#' vigfrnd \tab how willing r would make friends with x \cr
+#' vigwork \tab how willing r would work closely with x on a job \cr
+#' viggrp \tab how willing r would have a group home for x \cr
+#' vigmar \tab how willing r would have x marry in r's family \cr
+#' hurtoth \tab how likely x violent toward other people \cr
+#' hurtself \tab how likely x violent toward oneself \cr
+#' tlkfam \tab x should talk to family and friends \cr
+#' tlkclrgy \tab x should talk to religious leader \cr
+#' meddoc \tab x should go to general medical doctor for help \cr
+#' mentldoc \tab x should go to psychiatrist for help \cr
+#' mentloth \tab x should go to other mental health professional for help \cr
+#' sphealer \tab x should go to spiritual healer for help \cr
+#' selfhelp \tab x should join a self-group with similar problem \cr
+#' otcmed \tab x should take non-prescription medication \cr
+#' rxmed \tab x should take prescription medication \cr
+#' mentlhos \tab x should check into a mental hospital \cr
+#' dofirst \tab here are the things you said ... should do... interviewer: read list \cr
+#' mustdoc \tab x should be forced to be examined at a clinic by law \cr
+#' mustmed \tab x should be forced to take prescribed medication by law \cr
+#' musthosp \tab x should be admitted to be hospitalized for treatment by law \cr
+#' dangrslf \tab x should be admitted to be hospitalized for treatment if dangerous to x \cr
+#' dangroth \tab x should be admitted to be hospitalized for treatment if dangerous to others \cr
+#' knwmhosp \tab know anyone who was in a hospital \cr
+#' knwpatnt \tab known anyone seeing a psychologist etc? \cr
+#' fammhneg \tab r's family's negative attitudes about mh problems \cr
+#' othmhneg \tab r's other acquaintences negative attitudes about mh problems \cr
+#' diagnosd \tab r ever diagnosed with mh problem \cr
+#' mhtreatd \tab r ever treated for mh problem \cr
+#' relpersn \tab r consider self a religious person \cr
+#' sprtprsn \tab r consider self a spiritual person \cr
+#' aimofart \tab aim of art \cr
+#' othlang \tab can r speak language other than english/spanish \cr
+#' othlang1 \tab what other languages does r speak \cr
+#' othlang2 \tab what other languages does r speak \cr
+#' spklang \tab how well does r speak other language \cr
+#' letinhsp \tab immigration from latin america should be increased \cr
+#' letinasn \tab immigration from asia should be increased \cr
+#' compuse \tab r use computer \cr
+#' webmob \tab r uses home internet through mobile device \cr
+#' huclean \tab r hu interior cleanliness rating \cr
+#' satdemoc \tab r satisfied with way democracy works in america \cr
+#' disrspct \tab r is treated with less courtesy or respect than others \cr
+#' poorserv \tab r recieves poorer service in restaurants or stores \cr
+#' notsmart \tab people act as if they think r is not smart \cr
+#' afraidof \tab people act as if they are afraid of r \cr
+#' threaten \tab r is threatened or harassed \cr
+#' abmoral \tab r has a moral opposition to abortion \cr
+#' abhelp1 \tab r would help with arrangements for abortion \cr
+#' abhelp2 \tab r would help with paying for abortion \cr
+#' abhelp3 \tab r would help with paying for abortion-related other costs \cr
+#' abhelp4 \tab r would help with emotional support for abortion \cr
+#' numpets \tab how many pets r's family has \cr
+#' dog \tab dog \cr
+#' cat \tab cat \cr
+#' smammal \tab small mammal (rabbit, gerbil, hamster) \cr
+#' bird \tab bird \cr
+#' fish \tab fish \cr
+#' reptile \tab reptile (turtle, snake, lizard) \cr
+#' othpet \tab other pet \cr
+#' petfam \tab how often r considers pet member of family \cr
+#' chldvig \tab Vignette asked \cr
+#' chldprob \tab how serious r consider his or her problem \cr
+#' badchar \tab situation caused by own bad character \cr
+#' chembal \tab situation by a chemical imbalance in the brain \cr
+#' stressfl \tab situation caused by stressful circumstances \cr
+#' geneprob \tab situation caused by a genetic or inherited problem \cr
+#' raised \tab situation caused by the way he or she was raised \cr
+#' violtv \tab situation caused by watching violent tv \cr
+#' discipln \tab situation caused by lacking discipline in the \cr
+#' allergic \tab situation caused by food or chemical allergies \cr
+#' imprvdis \tab situation will improve with strict discipline \cr
+#' imprveat \tab situation will improve with some changes in diet \cr
+#' imprvmed \tab situation will improve with medical treatment \cr
+#' nextdoor \tab how willing r move next door to child's family \cr
+#' spendeve \tab how willing r spend evening with child's family \cr
+#' chldfrnd \tab how willing r have children make friends with ch \cr
+#' chldsch \tab how willing r have child in same class of r's ch \cr
+#' adfam \tab would r get advice from family if child was r's \cr
+#' adtch \tab would r get advice from teachers child if was r's \cr
+#' addoc \tab would go to a medical doctor if he was r's child \cr
+#' adcoumed \tab would r have child on med by counselor's advice \cr
+#' adpsy \tab would r go to a psychiatrist if child was r's \cr
+#' grwingup \tab is child experiencing normal ups and downs \cr
+#' mntlill \tab is child experiencing a mental illness \cr
+#' violpeop \tab would child do something violent toward other \cr
+#' violself \tab would child do something violent to own self \cr
+#' numemps \tab number of employee for the self-employed \cr
+#' wrkslffam \tab does r work in family business or farm \cr
+#' mhunsure \tab people like x are unpredictable \cr
+#' mhtrtot2 \tab r knows someone who received treatment for mental health \cr
+#' polint \tab your interest in politics \cr
+#' poleff11 \tab don't have any say about what the government does \cr
+#' cctv \tab civil liberties - video surveillance \cr
+#' posslq \tab does r have marital partner \cr
+#' posslqy \tab relationship status and cohabitation or not \cr
+#' marcohab \tab cohabitation status \cr
+#' trcourts \tab how much trust r has in american courts \cr
+#' goodlife \tab standard of living of r will improve \cr
+#' marsame \tab Homosexual couples should have the right to marry one another \cr
+#' meovrwrk \tab men hurt family when focus on work too much \cr
+#' localnum \tab number of employees: r's work site \cr
+#' relactiv \tab how often does r take part in relig activities \cr
+#' befair \tab how often do you think people take advantage \cr
+#' cantrust \tab people can be trusted or cant be too careful \cr
+#' religinf \tab the u.s. would be a better country if religion had less influence \cr
+#' tempgen \tab greenhouse effect danger to envir \cr
+#' grncon \tab concerned about environment \cr
+#' tempgen1 \tab greenhouse effect danger to envir \cr
+#' ambornin \tab how important to have been born in america \cr
+#' amcit \tab how important to have american citizenship \cr
+#' amchrstn \tab how important to be a christian \cr
+#' amgovt \tab how important to respect america's laws etc \cr
+#' amfeel \tab how important to feel american \cr
+#' amcitizn \tab agree i would rather be a citizen of america \cr
+#' amshamed \tab agree there are things make me ashamed \cr
+#' belikeus \tab agree better if people were more like americans \cr
+#' ambetter \tab agree america is a better country \cr
+#' ifwrong \tab agree people should support their country \cr
+#' prouddem \tab how proud the way democracy works \cr
+#' proudpol \tab how proud its political influence in the world \cr
+#' proudeco \tab how proud america's economic achievements \cr
+#' proudspt \tab how proud its achievements in sports \cr
+#' proudart \tab how proud its achievements in the arts & lit. \cr
+#' proudhis \tab how proud its history \cr
+#' imports \tab america should limit the import \cr
+#' wrldgovt \tab international bodies should enforce environment \cr
+#' amownway \tab america should follow its own interests \cr
+#' forland \tab foreigner's should not be allowed to buy land \cr
+#' amtv \tab tv should give preference to american films \cr
+#' immcrime \tab immigrants increase crime rates \cr
+#' immameco \tab immigrants good for america \cr
+#' immjobs \tab immigrants take jobs away \cr
+#' letin1 \tab number of immigrants to america nowadays should be \cr
+#' citizen \tab are you a citizen of america? \cr
+#' amancstr \tab how important to have american ancestry \cr
+#' intlincs \tab large intl company damage to local business \cr
+#' letin1a \tab number of immigrants nowadays should be \cr
+#' immassim \tab what statement about immigrants matches view \cr
+#' paytaxes \tab how important never to try to evade taxes \cr
+#' obeylaws \tab how important always to obey laws \cr
+#' watchgov \tab how important to keep watch on action of govt \cr
+#' helpusa \tab how important to help worse off ppl in america \cr
+#' solok \tab how important: citizens have adequate standard of living \cr
+#' rghtsmin \tab how important: govt protect right of minorities \cr
+#' polopts \tab how important: ppl given chance to participate in decsns \cr
+#' oppsegov \tab how important: citizen engage in acts of civil disobeyed \cr
+#' poleff18 \tab govt do not care much what ppl like r think \cr
+#' corruptn \tab how widespread corruption is in pub service in america \cr
+#' demtoday \tab how well democracy work in america \cr
+#' dem10pst \tab how well did democracy work in america ten yrs ago \cr
+#' dem10fut \tab how well will democracy work in america in ten yrs \cr
+#' polnews \tab how often use media to get political news \cr
+#' leftrght \tab how left or right in politics \cr
+#' partners \tab how many sex partner's r had in last year \cr
+#' sexsex \tab sex of sex partner's in last year \cr
+#' sexfreq \tab frequency of sex during last year \cr
+#' hivtest \tab have you ever been tested for hiv \cr
+#' hivtest1 \tab in what month and year was your last hiv test \cr
+#' hivtest2 \tab where did you have your last hiv test \cr
+#' sexornt \tab sexual orientation \cr
+#' realinc \tab family income in constant $ \cr
+#' realrinc \tab r's income in constant $ \cr
+#' coninc \tab family income in constant dollars \cr
+#' conrinc \tab respondent income in constant dollars \cr
+#' ethnic \tab country of family origin \cr
+#' eth1 \tab 1st mentioned country of origin \cr
+#' hispanic \tab hispanic specified \cr
+#' racecen1 \tab what is r's race 1st mention \cr
+#' racecen2 \tab what is r's race 2nd mention \cr
+#' racecen3 \tab what is r's race 3rd mention \cr
+#' uscitzn \tab is r us citizen \cr
+#' vetyears \tab years in armed forces \cr
+#' dwelling \tab type of structure \cr
+#' dwelown \tab does r own or rent home? \cr
+#' dwelown16 \tab did rs family own or rent home when r was age 16 \cr
+#' worda \tab word a \cr
+#' wordb \tab word b \cr
+#' wordc \tab word c \cr
+#' wordd \tab word d \cr
+#' worde \tab word e \cr
+#' wordf \tab word f \cr
+#' wordg \tab word g \cr
+#' wordh \tab word h \cr
+#' wordi \tab word i \cr
+#' wordj \tab word j \cr
+#' wordsum \tab number words correct in vocabulary test \cr
+#' hhrace \tab race of household \cr
+#' hhtype1 \tab household type (condensed) \cr
+#' famgen \tab number of family generations in household \cr
+#' rplace \tab r's relationship to household head \cr
+#' rvisitor \tab is r a visitor? \cr
+#' visitors \tab number of visitor's in household \cr
+#' dateintv \tab date of interview \cr
+#' isco08 \tab respondent's occupation, 2010 census & 2008 isco code \cr
+#' paisco08 \tab r's father's occupation, 2010 census & 2008 isco code \cr
+#' maisco08 \tab r's mother's occupation, 2010 census & 2008 isco code \cr
+#' spisco08 \tab r's mothers occupation, 2010 census & 2008 isco code \cr
+#' coisco08 \tab partner's occupation, 2010 census & 2008 isco code \cr
+#' sei10 \tab r's socioeconomic index (2010) \cr
+#' sei10educ \tab Percentage of some college educ in OCC10 based on ACS 2010 \cr
+#' sei10inc \tab Percentage of $45k+ earners in OCC10 based on ACS 2010 \cr
+#' pasei10 \tab r's father's socioeconomic index (2010) \cr
+#' pasei10educ \tab Percentage of some college educ in PAOCC10 based on ACS 2010 \cr
+#' pasei10inc \tab Percentage of $45k+ earners in PAOCC10 based on ACS 2010 \cr
+#' masei10 \tab r's mother's socioeconomic index (2010) \cr
+#' masei10educ \tab Percentage of some college educ in MAOCC10 based on ACS 2010 \cr
+#' masei10inc \tab Percentage of $45k+ earners in MAOCC10 based on ACS 2010 \cr
+#' spsei10 \tab r's spouse's socioeconomic index (2010) \cr
+#' spsei10educ \tab Percentage of some college educ in SPOCC10 based on ACS 2010 \cr
+#' spsei10inc \tab Percentage of $45k+ earners in SPOCC10 based on ACS 2010 \cr
+#' cosei10 \tab partner's socioeconomic index (2010) \cr
+#' cosei10educ \tab Percentage of some college educ in COOCC10 based on ACS 2010 \cr
+#' cosei10inc \tab Percentage of $45K+ earners in COOCC10 based on ACS 2010 \cr
+#' copres10 \tab Partner's occupational prestige score (2010) \cr
+#' copres105plus \tab partner's occupational prestige score using threshold method (2010) \cr
+#' cohort \tab year of birth \cr
+#' whoelse1 \tab presence of others: children under six \cr
+#' whoelse2 \tab presence of others: older children \cr
+#' whoelse3 \tab presence of others: spouse partner \cr
+#' whoelse4 \tab presence of others: other relatives \cr
+#' whoelse5 \tab presence of others: other adults \cr
+#' whoelse6 \tab presence of others: no one \cr
+#' intid \tab Interviewer id \cr
+#' feeused \tab fee given to get case \cr
+#' feelevel \tab amount of fees paid \cr
+#' lngthinv \tab how long was interview \cr
+#' intage \tab age of interviewer \cr
+#' intethn \tab race of interviewer \cr
+#' mode \tab interview done in-person or over the phone \cr
+#' intsex \tab sex of interviewer \cr
+#' intyrs \tab years of service as an interviewer at norc \cr
+#' consent \tab participation/recording consent \cr
+#' adminconsent \tab consent to possible data linkage \cr
+#' letdie1y \tab allow incurable patients to die (form 2) \cr
+#' ballot \tab ballot used for interview \cr
+#' issp \tab filter for issp cases \cr
+#' sampcode \tab Sampling error code \cr
+#' sample \tab sampling frame and method \cr
+#' oversamp \tab Weights for black oversamples \cr
+#' phase \tab subsampling: two-phase design. \cr
+#' spanself \tab if this interview had only been available in english, would you... \cr
+#' spaneng \tab interviews conducted in spanish or english \cr
+#' hlthstrt \tab would you say the respondent's health in general is excellent, good, fair, or poor \cr
+#' kidsinhh \tab does interviewer believe that there are children under the age of 15 present at  \cr
+#' respond \tab estimate of the probability that this household will respond to the survey \cr
+#' incuspop \tab estimated income status of housing unit \cr
+#' neisafe \tab how safe interviewer thinks neighborhood is \cr
+#' rlooks \tab r physical attractiveness rating \cr
+#' rgroomed \tab r grooming rating \cr
+#' rhlthend \tab r health rating \cr
+#' vstrat \tab Variance stratum \cr
+#' vpsu \tab Variance primary sampling unit \cr
+#' kish \tab  \cr
+#' famdif16y \tab Which of the following best describes your situation? \cr
+#' pawrkslf2 \tab At this job, was [dadfill] an employee, self-employed without employees, or self-employed with employees? \cr
+#' pawrkslffam \tab Father (or oldest same-sex parent) owned family business or farm \cr
+#' mawrkslf2 \tab At this job, was mother (or youngest same-sex parent) an employee, self-employed without employees, or self-employed with employees? \cr
+#' mawrkslffam \tab Mother (or youngest same-sex parent) owned family business or farm \cr
+#' ethworld1 \tab From what part of the world did your ancestors come?  Europe \cr
+#' ethworld2 \tab From what part of the world did your ancestors come?  Africa \cr
+#' ethworld3 \tab From what part of the world did your ancestors come?  Asia \cr
+#' ethworld4 \tab From what part of the world did your ancestors come?  Middle East \cr
+#' ethworld5 \tab From what part of the world did your ancestors come?  South America \cr
+#' ethworld6 \tab From what part of the world did your ancestors come?  Central America \cr
+#' ethworld7 \tab From what part of the world did your ancestors come?  North America \cr
+#' ethworld8 \tab From what part of the world did your ancestors come?  Caribbean \cr
+#' ethworld9 \tab From what part of the world did your ancestors come?  Oceania \cr
+#' wrkgovt1 \tab govt employee \cr
+#' wrkgovt2 \tab private employee \cr
+#' spkathy \tab allow anti-religionist to speak y \cr
+#' libathy \tab allow anti-religionist to teach y \cr
+#' spkracy \tab allow anti-religious book in library y \cr
+#' libracy \tab allow racists book in library y \cr
+#' spkcomy \tab allow communist to speak y \cr
+#' colcomy \tab should communist teacher be fired y \cr
+#' libcomy \tab allow communists book in library y \cr
+#' spkmslmy \tab allow muslim clergymen preaching hatred of the us y \cr
+#' libmslmy \tab allow anti-american muslim clergymen's books in library y \cr
+#' polhitoky \tab ever approve of police striking citizen y \cr
+#' polabusey \tab citizen said vulgar or obscene things y \cr
+#' polattaky \tab citizen attacking policeman with fists y \cr
+#' raceacs1 \tab white \cr
+#' raceacs2 \tab black \cr
+#' raceacs3 \tab american indian or alaska native \cr
+#' raceacs4 \tab asian indian \cr
+#' raceacs5 \tab chinese \cr
+#' raceacs6 \tab filipino \cr
+#' raceacs7 \tab japanese \cr
+#' raceacs8 \tab korean \cr
+#' raceacs9 \tab vietnamese \cr
+#' raceacs10 \tab other asian \cr
+#' raceacs14 \tab other pacific islander \cr
+#' raceacs15 \tab some other race \cr
+#' raceacs16 \tab hispanic \cr
+#' abdefectg \tab strong chance of serious defect (grid on web) \cr
+#' abnomoreg \tab married--wants no more children (grid on web) \cr
+#' abhlthg \tab woman's health seriously endangered (grid on web) \cr
+#' abpoorg \tab low income--cant afford more children (grid on web) \cr
+#' abrapeg \tab pregnant as result of rape (grid on web) \cr
+#' absingleg \tab not married (grid on web) \cr
+#' suicide1g \tab suicide if incurable disease \cr
+#' suicide2g \tab suicide if bankrupt \cr
+#' suicide4g \tab suicide if tired of living \cr
+#' maborn \tab Was R's mother (or youngest same-sex parent) born in this country? \cr
+#' paborn \tab Was R's father (or oldest same-sex parent) born in this country? \cr
+#' sexbirth1 \tab r's sex assigned at birth (2021) \cr
+#' norelgsp \tab is r atheist or agnostic \cr
+#' hivafraid \tab afraid to be around a person with hiv \cr
+#' hivimmrl \tab people with hiv have participated in immoral activities \cr
+#' hivdscrm \tab there is a lot of discrimination against people with hiv \cr
+#' ptnrornt \tab recent partner's sexual orientation \cr
+#' ptnrsxbrth \tab recent partner's sex at birth \cr
+#' wtssps \tab person post-stratification weight \cr
+#' wtssnrps \tab Person post-stratification weight, nonrespondents adjusted \cr
+#' prayerv \tab bible prayer in public schools (with volunteered response on web) \cr
+#' courtsv \tab courts dealing with criminals (with volunteered response on web) \cr
+#' discaffwv \tab a woman won't get a job or promotion (with volunteered response on web) \cr
+#' racopenv \tab vote on open housing law (with volunteered response on web) \cr
+#' getaheadv \tab opinion of how people get ahead (with volunteered response on web) \cr
+#' divlawv \tab divorce laws (with volunteered response on web) \cr
+#' helpfulv \tab people helpful or looking out for selves (with volunteered response on web) \cr
+#' fairv \tab people fair or try to take advantage (with volunteered resposne on web) \cr
+#' trustv \tab can people be trusted (with volunteered response on web) \cr
+#' grassv \tab should marijuana be made legal (with volunteered response on web) \cr
+#' relitenv \tab strength of affiliation (with volunteered response on web) \cr
+#' biblev \tab feelings about the bible (with volunteered response on web) \cr
+#' postlifev \tab belief in life after death (with volunteered response on web) \cr
+#' kidssolv \tab r's kids living standard compared to r (with volunteered response on web) \cr
+#' fepolv \tab women not suited for politics (with volunteered response on web) \cr
+#' prayernv \tab bible prayer in public schools (no volunteered response on web) \cr
+#' courtsnv \tab courts dealing with criminals (no volunteered response on web) \cr
+#' discaffwnv \tab a woman won't get a job or promotion (no volunteered response on web) \cr
+#' racopennv \tab vote on open housing law (no volunteered response on web) \cr
+#' getaheadnv \tab opinion of how people get ahead (no volunteered response on web) \cr
+#' divlawnv \tab divorce laws (no volunteered response on web) \cr
+#' helpfulnv \tab people helpful or looking out for selves (no volunteered response on web) \cr
+#' fairnv \tab people fair or try to take advantage (no volunteered response on web) \cr
+#' trustnv \tab can people be trusted (no volunteered response on web) \cr
+#' grassnv \tab should marijuana be made legal (no volunteered response on web) \cr
+#' relitennv \tab strength of affiliation (no volunteered response on web) \cr
+#' biblenv \tab feelings about the bible (no volunteered response on web) \cr
+#' postlifenv \tab belief in life after death (no volunteered response on web) \cr
+#' kidssolnv \tab r's kids living standard compared to r (no volunteered response on web) \cr
+#' fepolnv \tab women not suited for politics (no volunteered response on web) \cr
+#' abanyg \tab abortion if woman wants for any reason (grid on web) \cr
+#' fileversion \tab NA \cr
+#' spwrkslf2 \tab SPOUSE SELF-EMPLOYED, WITH EMPLOYEES, OR WORK FOR SOMEONE ELSE \cr
+#' spwrkslffam \tab SPOUSE WORK AT FAMILY BUSINESS OR ON FAMILY FARM \cr
+#' childsinhh \tab TOTAL CHILDREN IN HH (HOUSEHOLD COMPOSITION VERSION) \cr
+#' adultsinhh \tab TOTAL ADULTS IN HH (HOUSEHOLD COMPOSITION VERSION) \cr
+#' whatsp2 \tab How would you classify the place where your ...? Was this mainly...? \cr
+#' cowrkslf2 \tab PARTNER SELF-EMPLOYED, WITH EMPLOYEES, OR WORK FOR SOMEONE ELSE \cr
+#' cowrkslffam \tab PARTNER WORK AT FAMILY BUSINESS OR ON FAMILY FARM \cr
+#' cowksup \tab DOES PARTNER SUPERVISE ANYONE \cr
+#' whatco2 \tab CLASSIFY PLACE WHERE PARTNERS WORKS \cr
+#' whatpa2 \tab How would you classify the place where father (or oldest same-sex parent) worked? Was this mainly...? \cr
+#' whatma2 \tab How would you classify the place where mother (or youngest same-sex parent) worked? Was this mainly...? \cr
+#' whatslf2 \tab How would you classify the place where you ...? Was this mainly...? \cr
+#' racerank1 \tab FIRST RACE SELECTED \cr
+#' racerank2 \tab SECOND RACE SELECTED \cr
+#' racerank3 \tab THIRD RACE SELECTED \cr
+#' adoptus \tab IMMIGRANTS LIVING IN US SHOULD ADOPT US CULTURE \cr
+#' immfate \tab FATE OF ILLEGAL IMMIGRANTS \cr
+#' xmoviey \tab SEEN PORNOGRAPHY IN PAST YEAR \cr
+#' vote20 \tab REMEMBER IF VOTED IN 2020 ELECTION \cr
+#' pres20 \tab VOTED TRUMP OR BIDEN \cr
+#' if20who \tab WHO YOU WOULD HAVE VOTED FOR IN 2020 \cr
+#' wordk \tab WORD K \cr
+#' wordl \tab WORD L \cr
+#' wordn \tab WORD N \cr
+#' svyenjoy \tab ENJOY TAKING SURVEYS \cr
+#' svyid1 \tab WILLINGNESS TO USE VIDEO CHAT \cr
+#' svyid2 \tab WILLINGNES FOR IN-PERSON SURVEY \cr
+#' gestate \tab ABORTION LEGAL PAST 4.5 MONTHS \cr
+#' nextstatus \tab GSS NEXT FOLLOW-ON STATUS \cr
+#' racdif1x \tab DIFFERENCES DUE TO DISCRIMINATION (LONGER INTRO) \cr
+#' racdif2x \tab DIFFERENCES DUE TO IN-BORN LEARNING ABILITY \cr
+#' racdif3x \tab DIFFERENCES DUE TO LACK OF EDUCATION \cr
+#' racdif4x \tab DIFFERENCES DUE TO LACK OF WILL \cr
+#' hompop_exp \tab TOTAL PEOPLE IN HH (EXPERIMENTAL VERSION) \cr
+#' modesequence \tab INITIAL MODE OF CONTACT FOR RESPONDENT \cr
+#' totalincentive \tab totalincentive \cr
+#' babies_exp \tab KIDS 0-6 IN HH(EXPERIMENTAL VERSION) \cr
+#' preteen_exp \tab KIDS 7-12 IN HH(EXPERIMENTAL VERSION) \cr
+#' teens_exp \tab KIDS 13-17 IN HH(EXPERIMENTAL VERSION) \cr
+#' adults_exp \tab ADULTS 18+ IN HH(EXPERIMENTAL VERSION) \cr
+#' prnt \tab R IS A PARENT IN SOME CAPACITY IN HH \cr
+#' childs_exp \tab TOTAL CHILDREN UNDER 18 IN HH (EXPERIMENTAL VERISON) \cr
+#' famgen_exp \tab NUMBER OF FAMILY GENERATIONS IN HOUSEHOLD (EXPERIMENTAL VERSION) \cr
+#' hhtype1_exp \tab HOUSEHOLD TYPE (CONDENSED) (EXPERIMENTAL VERSION) \cr
+#' batch \tab SAMPLE BATCH \cr
+#' subsamprate \tab Subsampling rate corresponding to two-phase design \cr
+#' wtssps_next \tab POSTSTRATIFICATION WEIGHT FOR ANALYZING GSS NEXT FOLLOW-ON \cr
+#' wtssnrps_next \tab POSTSTRATIFICATION AND NONRESPONSE WEIGHT FOR ANALYZING GSS NEXT FOLLOW-ON \cr
+#' nexteligible \tab GSS NEXT FOLLOW-ON ELIGIBLE \cr
+#' pawrkgrw \tab Did father (or oldest same-sex parent) ever work for pay for as long as a year while you were growing up? \cr
+#' conlabory \tab Confidence in labor unions \cr
+#' racdif5 \tab differences due mainly to unbringing \cr
+#' marsamey \tab Same-sex couples should have the right to marry one another \cr
+#' norelgsp16 \tab R no religion age 16 \cr
+#' spnorelgsp \tab Spouse no religion \cr
+#' mobiledata \tab HOUSEHOLD HAS ACCESS TO INTERNET USING CELLULAR DATA PLAN \cr
+#' broadband \tab HOUSEHOLD HAS ACCESS TO INTERNET USING BROADBAND INTERNET SERVICE \cr
+#' rateincumb24 \tab RATING OF JOE BIDEN \cr
+#' ratechall124 \tab RATING OF DONALD TRUMP \cr
+#' ratechall224 \tab RATING OF KAMALA HARRIS \cr
+#' ratechall324 \tab RATING OF NIKKI HALEY \cr
+#' ratedemp \tab RATING OF DEMOCRATIC PARTY \cr
+#' raterepp \tab RATING OF REPUBLICAN PARTY \cr
+#' ratemaga \tab RATING OF MAGA REPUBLICANS \cr
+#' lkelyvot \tab LIKELIHOOD TO VOTE IN 2024 ELECTION \cr
+#' whovote24a \tab VOTING INTENTION IN 2024 ELECTION (POST JULY 25 2024) \cr
+#' econstat \tab WHAT DO YOU THINK ABOUT THE STATE OF THE ECONOMY THESE DAYS IN THE UNITED STATES? \cr
+#' polintrst \tab INTERESTED IN CAMPAIGNS THIS YEAR \cr
+#' intrnetuse \tab Frequency of internet use over past 12 months \cr
+#' nouseint1 \tab No internet use over past 12 months due to unavaliblity \cr
+#' nouseint2 \tab No internet use over past 12 months due to poor quality of connection \cr
+#' nouseint3 \tab No internet use over past 12 months due to cost \cr
+#' nouseint4 \tab No internet use over past 12 months due to security and privacy \cr
+#' nouseint5 \tab No internet use over past 12 months due to lack of utility/importance \cr
+#' nouseint6 \tab No internet use over past 12 months due to age \cr
+#' nouseint7 \tab No internet use over past 12 months due to usability \cr
+#' nouseint8 \tab No internet use over past 12 months due to lack of desire \cr
+#' nouseint9 \tab No internet use over past 12 months due to literacy \cr
+#' nouseint10 \tab No internet use over past 12 months due to lack of time \cr
+#' nouseint11 \tab No internet use over past 12 months due to government restriction \cr
+#' nouseint12 \tab No internet use over past 12 months due to other reasons \cr
+#' intaccprxy \tab How often R asked someone to use the internet on their behalf \cr
+#' prxyuse \tab Likelihood R ask someone to use the internet on their behalf in near future \cr
+#' ftruse \tab Likelihood R uses internet in next 12 months \cr
+#' inthome \tab Frequency R has home internet access \cr
+#' intprfssnl \tab Frequency R has work/school internet access \cr
+#' intpub \tab Frequency R has internet access in public \cr
+#' intbhlf \tab Frequency R was asked to use internet for someone else \cr
+#' unplug \tab Amount R reduced time spent on internet in last 12 months \cr
+#' unplgrsn \tab Reason R reduced time spent on internet \cr
+#' intskill \tab R's skill at using the internet \cr
+#' intsurf \tab R's skill at online searches \cr
+#' intliteracy \tab R's knowledge of online information discretion \cr
+#' intapps \tab R's skill at learning new software \cr
+#' intcomm \tab How often R uses internet for communication \cr
+#' intshare \tab How often R uses internet for sharing photos/videos \cr
+#' intsearch \tab How often R uses internet for search \cr
+#' intgame \tab How often R uses internet for video games \cr
+#' intstream \tab How often R uses internet for music/video \cr
+#' intfncl \tab How often R uses internet for financial transactions \cr
+#' intmeet \tab R more comfortable meeting people online? \cr
+#' intlnly \tab R would feel lonely without internet? \cr
+#' inttrig \tab How often R reads political opinions they disagree with online \cr
+#' intnews \tab How often R accesses non-routine political news sources \cr
+#' intcnfrm \tab How often R tries to confirm information with other sources \cr
+#' intrust \tab How much R trusts people they've only met online \cr
+#' intpolview \tab Trend of online contact with politically similar \cr
+#' intoppo \tab Trend of online contact with politically different \cr
+#' intviews \tab How often R talks about politics online \cr
+#' techesy \tab Does technology make our lives easier? \cr
+#' harmgood1 \tab Does technology do more harm than good? \cr
+#' nextgen1 \tab Does technology provide more opportunities? \cr
+#' intscam \tab Has R or someone they know been a victim of online scam \cr
+#' inthrss \tab Has R or someone they know been harassed online \cr
+#' polnewsfrom \tab Where R gets political news \cr
+#' smnews \tab Reliability of news on social media \cr
+#' tvnews1 \tab Reliability of news on TV \cr
+#' papernews \tab Reliability of newspapers \cr
+#' radionews \tab Reliability of news on podcasts, radio \cr
+#' webnews \tab Reliability of news on web \cr
+#' modepet \tab Has R signed a petition in last 12 months \cr
+#' modeprot \tab Has R participated in a protest in last 12 months \cr
+#' modelobby \tab Has R contacted a politician in last 12 months \cr
+#' modeorgprot \tab Has R organized a protest in last 12 months \cr
+#' modeorg \tab Has R belonged to an activist group in last 12 months \cr
+#' trppl \tab Trust in others, 10 point scale \cr
+#' trcong \tab Trust in congress, 10 point scale \cr
+#' dataprot \tab Responsibility for internet data protection \cr
+#' emonitor1 \tab Should government be able to monitor online communication \cr
+#' infodeal \tab Would R provide info for discounts, free products \cr
+#' infoprofit \tab Would R provide info companies could profit from \cr
+#' gendtech \tab Are women or men benefiting more from digital tech \cr
+#' agetech \tab Are older or younger people benefiting more from digital tech \cr
+#' urbantech \tab Are cities or countryside benefiting more from digital tech \cr
+#' eductech \tab Are educated or uneducated benefiting more from digital tech \cr
+#' classtech \tab Are poor or rich benefiting more from digital tech \cr
+#' aiworry \tab R worried that AI will take over many jobs done by humans \cr
+#' aimed \tab R's comfort with medical operation by robot \cr
+#' aidrive \tab R's comfort with driverless car \cr
+#' owndecns \tab Best if every nation had its own country \cr
+#' brneffrt \tab Possible to become American if born elsewhere \cr
+#' immcrime1 \tab Immigrants increase crime rates \cr
+#' immjobs1 \tab Immigrants take jobs away \cr
+#' immideas1 \tab Immigrants bring new ideas and cultures \cr
+#' immwlfare \tab People born in America should be given preference over immigrants when it comes to jobs, housing, or health care \cr
+#' conscrp \tab Importance of military service \cr
+#' incgap1 \tab Government's responsibility to reduce economic inequality \cr
+#' leftrght1 \tab How left or right in politics \cr
+#' servpub \tab How much the public service serves people \cr
+#' fulldem \tab The people, not politicians, should make important decisions \cr
+#' poltalk \tab Politicians talk too much and don't take action \cr
+#' conpow \tab Conflict between ordinary people and those in power \cr
+#' bizmoney \tab Business leaders make money at expense of ordinary people \cr
+#' experts \tab Better to rely on opinions of experts than ordinary people \cr
+#' biasnews \tab News coverage about politics in America is biased \cr
+#' usmca1 \tab R's familiarity with USMCA \cr
+#' usmca2 \tab Does the US benefit from USMCA \cr
+#' morextrm \tab Everyone is like X but X's case is just a bit more extreme and ongoing \cr
+#' bullied \tab Situation caused by having been bullied \cr
+#' smedia \tab Situation caused by exposure to social media \cr
+#' imprvown1 \tab How likely child X situation will improve on its own \cr
+#' mustdoc1 \tab X's parents should be forced by law to have X examined at a clinic \cr
+#' mustmed1 \tab X's parents should be forced by law to have X take prescribed medication \cr
+#' musthosp1 \tab X's parents should be forced by law to admit X to be hospitalized for treatment \cr
+#' physill1 \tab How likely child X is experiencing physical illness \cr
+#' bullpeer \tab Would X bully peers \cr
+#' rumopeer \tab Would X spread rumors about peers \cr
+#' fighpeer \tab Would X get into fights with peers \cr
+#' schshoot \tab Would X carry out a school shooting \cr
+#' cutself \tab Would X intentionally cut self \cr
+#' negself \tab Would X intentionally neglect own health \cr
+#' foodalc \tab Would X engage in excessive and uncontrolled food or alcohol consumption \cr
+#' risklife \tab Would X at risk for taking their own life \cr
+#' takelife \tab Would X actually take own life \cr
+#' dsndntpay \tab Reparations for descendants of slaves \cr
+#' acpttg \tab Accepting people \cr
+#' chngdocs \tab Changing official documents \cr
+#' feovrwrk \tab Family life suffers when women work \cr
+#' sexornt1 \tab Sexual orientation (reask, self-administered) \cr
+#' sexpaid \tab Ever had sex with a person you paid or who paid you for sex \cr
+#' nocondom \tab Had vaginal or anal sex without a condom in past 12 months \cr
+#' nodocidu \tab Ever injected any drugs other than those prescribed for you \cr
+#' femself1 \tab How feminine R sees self (0 to 6 scale) \cr
+#' mascself1 \tab How masculine R sees self (0 to 6 scale) \cr
+#' femsee1 \tab How feminine others see R (0 to 6 scale) \cr
+#' mascsee1 \tab How masculine others see R (0 to 6 scale) \cr
+#' devtype \tab Are you taking this survey on a... \cr
+#' family16sex \tab Sex of two parents living with when 16 yrs old \cr
+#' racdif5x \tab differences due mainly to upbringing (longer intro) \cr
+#' reltrad \tab Religious tradition \cr
+#' reltrad16 \tab Religious tradition age 16 \cr
+#' conorelgsp \tab Partner no religion \cr
+#' sexnow2 \tab R's sex now (3 category) \cr
+#' mighist \tab When R came to U.S. \cr
+#' migage \tab Age when R came to U.S. \cr
+#' whovote24 \tab VOTING INTENTION IN 2024 ELECTION (PRE JULY 25 2024) \cr
+#' whovotets \tab VOTING INTENTION - TIME SERIES \cr
+#' voteprob \tab VOTING PROBLEM IN US ELECTIONS \cr
+#' rateincumbts \tab RATING OF INCUMBENT PRESIDENT - TIME SERIES \cr
+#' ratechall1ts \tab RATING OF PRESIDENTIAL CHALLENGER 1 - TIME SERIES \cr
+#' ratechall2ts \tab RATING OF PRESIDENTIAL CHALLENGER 2 - TIME SERIES \cr
+#' ratechall3ts \tab RATING OF PRESIDENTIAL CHALLENGER 3 - TIME SERIES \cr
+#' aneseligible \tab ANES FOLLOW-ON ELIGIBLE \cr
+#' anespre_status \tab ANES PRE-ELECTION SURVEY STATUS \cr
+#' anespost_status \tab ANES POST-ELECTION SURVEY STATUS \cr
+#' chldfam_asn \tab Percent of family during childhood who were Asian \cr
+#' chldfam_blk \tab Percent of family during childhood who were Black \cr
+#' chldfam_hisp \tab Percent of family during childhood who were Latino \cr
+#' chldfam_wht \tab Percent of family during childhood who were White \cr
+#' chldfam_oth \tab Percent of family during childhood who were some other race \cr
+#' chldadlt_asn \tab Percent of adults you knew (friends, care takers, neighbors) during childhood who were Asian \cr
+#' chldadlt_blk \tab Percent of adults you knew (friends, care takers, neighbors) during childhood who were Black \cr
+#' chldadlt_hisp \tab Percent of adults you knew (friends, care takers, neighbors) during childhood who were Latino \cr
+#' chldadlt_wht \tab Percent of adults you knew (friends, care takers, neighbors) during childhood who were White \cr
+#' chldadlt_oth \tab Percent of adults you knew (friends, care takers, neighbors) during childhood who were some other race \cr
+#' chldchld_asn \tab Percent of children you knew (friends, classmates) during childhood who were Asian \cr
+#' chldchld_blk \tab Percent of children you knew (friends, classmates) during childhood who were Black \cr
+#' chldchld_hisp \tab Percent of children you knew (friends, classmates) during childhood who were Latino \cr
+#' chldchld_wht \tab Percent of children you knew (friends, classmates) during childhood who were White \cr
+#' chldchld_oth \tab Percent of children you knew (friends, classmates) during childhood who were some other race \cr
+#' chldshop_asn \tab Percent of people who shopped at the supermarket during childhood who were Asian \cr
+#' chldshop_blk \tab Percent of people who shopped at the supermarket during childhood who were Black \cr
+#' chldshop_hisp \tab Percent of people who shopped at the supermarket during childhood who were Latino \cr
+#' chldshop_wht \tab Percent of people who shopped at the supermarket during childhood who were White \cr
+#' chldshop_oth \tab Percent of people who shopped at the supermarket during childhood who were some other race \cr
+#' ptnrsxnow1 \tab Recent partner's sex now (3 category) \cr
+#' perla \tab R skin tone via interviewer \cr
+#' petsseq \tab Position of pet questions in questionnaire \cr
+#' credrep \tab R credit report \cr
+#' credchoice \tab R's credit score has to do with choices or things out of your control \cr
+#' credam \tab Americans' credit score has to do with choices or things out of their control \cr
+#' credland \tab Use credit report - landlords \cr
+#' credemp \tab Use credit report - employers \cr
+#' credcar \tab Use credit report - car insurers \cr
+#' chldidel_next \tab Ideal number of children - follow-on version \cr
+#' chldpref_next \tab R ideal number of children - follow-on version \cr
+#' knwsexor \tab R knows anyone who is gay, lesbian, or bisexual \cr
+#' happy_next \tab General happiness - follow-on version \cr
+#' perla_self \tab R self-reported skin tone \cr
+#' topprob1_next \tab Most important issue for America - follow on version \cr
+#' topprob2_hlth \tab Next important issue (health care) - follow-on version \cr
+#' topprob2_educ \tab Next important issue (education) - follow-on version \cr
+#' topprob2_crim \tab Next important issue (crime) - follow-on version \cr
+#' topprob2_envr \tab Next important issue (environment) - follow-on version \cr
+#' topprob2_immg \tab Next important issue (immigration) - follow-on version \cr
+#' topprob2_econ \tab Next important issue (economy) - follow-on version \cr
+#' topprob2_terr \tab Next important issue (terrorism) - follow-on version \cr
+#' topprob2_povt \tab Next important issue (poverty) - follow-on version \cr
+#' topprob2_none \tab Next important issue (none of these) - follow-on version \cr
+#' hhtype1_next \tab Household type (condensed) - follow-on version \cr
+#' famgen_next \tab Number of family generations in household - follow-on version \cr
+#' dateintv_next \tab Date of GSS Next interview \cr
+#' wordsum7 \tab number words correct in vocabulary test (7 common items) \cr
+#' wordsumold \tab number words correct in vocabulary test (original items) \cr
+#' wordsumnew \tab number words correct in vocabulary test (experiment items) \cr
+#' }
+#' @source Data: \url{https://kjhealy.github.io/gssr/}
+#' @source Codebook: \url{https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS\%202024\%20Codebook\%20R3.pdf}
+
+#'
+"GSS2024"

@@ -12,7 +12,7 @@ chiplot(
   title = "",
   show.legend = TRUE,
   legend.title = "Z",
-  colors = c("dodgerblue3", "white", "firebrick2"),
+  colors = c("firebrick2", "white", "dodgerblue3"),
   outline.color = "white",
   lab = FALSE,
   lab_col = "black",

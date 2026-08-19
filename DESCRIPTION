@@ -1,6 +1,6 @@
 Package: vannstats
 Title: Simplified Statistical Procedures for Social Sciences
-Version: 1.6.3.20
+Version: 1.6.8.16
 Description: Simplifies functions to conduct univariate, bivariate, and multivariate statistical techniques. Includes functions designed to replicate plots and tables that would result from similar calls in 'SPSS', including hst(), box(), qq(), tab(), cormat(), and residplot(). Also includes simplified formulae, such as mode(), scatter(), p.corr(), ow.anova(), and rm.anova().
 Depends: R (>= 3.2.3)
 Encoding: UTF-8
@@ -9,6 +9,7 @@ Imports: gdata, plm, dplyr, ggplot2, rlang, purrr, stats, graphics,
         DescTools, reshape2
 License: GPL-3
 LazyData: true
+LazyDataCompression: xz
 NeedsCompilation: no
 Authors@R: 
 	person(given = "Burrel",
