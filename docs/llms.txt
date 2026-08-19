@@ -45,6 +45,7 @@ library(vannstats)
 | [`residplot()`](https://vannstats.burrelvannjr.com/reference/residplot.md) | Residuals plot for a regression equation |
 | [`scatter()`](https://vannstats.burrelvannjr.com/reference/scatter.md) | Scatterplot with an overlaid fit line |
 | [`bar.chart()`](https://vannstats.burrelvannjr.com/reference/bar.chart.md) | Bar chart for a given variable |
+| [`chiplot()`](https://vannstats.burrelvannjr.com/reference/chiplot.md) | Standardized residuals plot for chi square differences |
 
 ### Descriptive Statistics
 
@@ -101,6 +102,15 @@ box(data, mpg, cyl)
 
 data <- mtcars
 qq(data, mpg, cyl)
+```
+
+### Chi Square Plot
+
+``` r
+
+data <- mtcars
+x2 <- chi.sq(data, vs, am, post=TRUE)
+chiplot(zmat = x2$z_mat, p.mat = x2$p_z_mat, z.crit = round(x2$z_crit, 4), outline.color = "white", lab = TRUE, digits = 3)
 ```
 
 ### Crosstab
@@ -175,6 +185,8 @@ demonstration purposes:
 
 | Dataset | Description |
 |----|----|
+| `GSS2024` | General Social Survey, 2024 — individual survey responses on a range of social topics (NORC at the University of Chicago) |
+| `GSS2022` | General Social Survey, 2022 — individual survey responses on a range of social topics (NORC at the University of Chicago) |
 | `GSS2014` | General Social Survey, 2014 — individual survey responses on a range of social topics (NORC at the University of Chicago) |
 | `UCR2015` | Uniform Crime Reports, 2015 — county-level crime data |
 | `howell_aids_wide` | Howell Student AIDS Knowledge Data in wide format (3 time points) |
