@@ -18,17 +18,17 @@ Defendants2025
 
 A data frame with 1738 observations and 11 variables.
 
-|                                                                                            |             |
-|--------------------------------------------------------------------------------------------|-------------|
-|                                                                                            | id          |
-| Unique defendant identifier                                                                | age         |
-| The defendant's age                                                                        | race        |
-| Race of the defendant                                                                      | race_binary |
-| race, broken into a binary/dummy variable, measuring whether or not the defendant is white | charge      |
-| The crime the defendant was charged with                                                   | gang        |
-| Whether or not the defendant is affiliated with a gang                                     | priors      |
-| The number of prior misdemeanors the defendant has                                         | gun         |
-| Whether or not a gun was involved in this case                                             | risk_score  |
-| A judge's risk-of-reoffending score for the defendant                                      | bail        |
-| The bail amount for the defendant                                                          | perkins     |
-| Whether or not a Perkins Operation was conducted on defendant while in custody             |             |
+|  |  |
+|----|----|
+|  | id |
+| Unique defendant identifier | age |
+| The defendant's age | race |
+| Race of the defendant | race_binary |
+| race, broken into a binary/dummy variable, measuring whether or not the defendant is white | charge |
+| The crime the defendant was charged with | gang |
+| Whether or not the defendant is affiliated with a gang | priors |
+| The number of prior misdemeanors the defendant has | gun |
+| Whether or not a gun was involved in this case | risk_score |
+| A judge's risk-of-reoffending score for the defendant | bail |
+| The bail amount for the defendant | perkins |
+| Whether or not a Perkins Operation was conducted on defendant while in custody |  |

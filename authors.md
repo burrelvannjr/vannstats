@@ -11,13 +11,13 @@ Source:
 [`DESCRIPTION`](https://github.com/burrelvannjr/vannstats/blob/main/DESCRIPTION)
 
 Vann Jr B (2026). *vannstats: Simplified Statistical Procedures for
-Social Sciences*. R package version 1.6.3.20,
+Social Sciences*. R package version 1.6.8.16,
 <https://github.com/burrelvannjr/vannstats>.
 
     @Manual{,
       title = {vannstats: Simplified Statistical Procedures for Social Sciences},
       author = {Burrel {Vann Jr}},
       year = {2026},
-      note = {R package version 1.6.3.20},
+      note = {R package version 1.6.8.16},
       url = {https://github.com/burrelvannjr/vannstats},
     }

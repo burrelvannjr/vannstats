@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Simplified Statistical Procedures for Social Sciences">
 <meta name="description" content="Simplifies functions to conduct univariate, bivariate, and multivariate statistical techniques. Includes functions designed to replicate plots and tables that would result from similar calls in SPSS, including hst(), box(), qq(), tab(), cormat(), and residplot(). Also includes simplified formulae, such as mode(), scatter(), p.corr(), ow.anova(), and rm.anova().">
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">vannstats</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.3.20</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.8.16</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,34 +96,38 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/hst.html">hst()</a></code></td>
 <td>Histogram — can be parsed by up to 2 grouping variables</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/box.html">box()</a></code></td>
 <td>Box-and-Whisker plot — can be parsed by up to 2 grouping variables</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/qq.html">qq()</a></code></td>
 <td>Q-Q (Quantile-Quantile) plot — can be parsed by up to 2 grouping variables</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/residplot.html">residplot()</a></code></td>
 <td>Residuals plot for a regression equation</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/scatter.html">scatter()</a></code></td>
 <td>Scatterplot with an overlaid fit line</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/bar.chart.html">bar.chart()</a></code></td>
 <td>Bar chart for a given variable</td>
+</tr>
+<tr>
+<td><code><a href="reference/chiplot.html">chiplot()</a></code></td>
+<td>Standardized residuals plot for chi square differences</td>
 </tr>
 </tbody>
 </table>
@@ -136,28 +140,28 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/univ.desc.html">univ.desc()</a></code></td>
 <td>Univariate descriptive statistics, optionally parsed by a grouping variable</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/mode.html">mode()</a></code></td>
 <td>Mode of a variable</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/z.calc.html">z.calc()</a></code></td>
 <td>Z-score for a given value relative to a variable’s mean and SD</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/se.html">se()</a></code></td>
 <td>Standard error of a variable</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>ci()</code></td>
 <td>Confidence interval for a variable at a specified confidence level</td>
 </tr>
@@ -172,32 +176,32 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/tab.html">tab()</a></code></td>
 <td>Crosstab of observed and expected frequencies for two categorical variables</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/chi.sq.html">chi.sq()</a></code></td>
 <td>Pearson’s Chi-Square test (with optional post-hoc comparisons and Cramér’s V)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/p.corr.html">p.corr()</a></code></td>
 <td>Pearson’s Product-Moment Correlation Coefficient</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/cormat.html">cormat()</a></code></td>
 <td>Correlation matrix for variables in a formula</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/ow.anova.html">ow.anova()</a></code></td>
 <td>One-Way ANOVA (with optional Tukey’s HSD post-hoc test and means plot)</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/rm.anova.html">rm.anova()</a></code></td>
 <td>One-Way Repeated Measures ANOVA (with sphericity correction and test)</td>
 </tr>
@@ -212,20 +216,20 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/dummy.html">dummy()</a></code></td>
 <td>Creates dummy-coded columns for the values of a categorical variable</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/revcode.html">revcode()</a></code></td>
 <td>Reverse-codes a scale variable</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/stata.plm.margins.html">stata.plm.margins()</a></code></td>
 <td>Predictive margins from a panel linear model, mirroring STATA’s <code>margins</code> output</td>
 </tr>
@@ -259,16 +263,24 @@
 <span><span class="fu"><a href="reference/qq.html">qq</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="crosstab">Crosstab<a class="anchor" aria-label="anchor" href="#crosstab"></a>
+<h3 id="chi-square-plot">Chi Square Plot<a class="anchor" aria-label="anchor" href="#chi-square-plot"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/chi.sq.html">chi.sq</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">vs</span>, <span class="va">am</span>, post<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/chiplot.html">chiplot</a></span><span class="op">(</span>zmat <span class="op">=</span> <span class="va">x2</span><span class="op">$</span><span class="va">z_mat</span>, p.mat <span class="op">=</span> <span class="va">x2</span><span class="op">$</span><span class="va">p_z_mat</span>, z.crit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">x2</span><span class="op">$</span><span class="va">z_crit</span>, <span class="fl">4</span><span class="op">)</span>, outline.color <span class="op">=</span> <span class="st">"white"</span>, lab <span class="op">=</span> <span class="cn">TRUE</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="crosstab">Crosstab<a class="anchor" aria-label="anchor" href="#crosstab"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="fu"><a href="reference/tab.html">tab</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">vs</span>, <span class="va">am</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="chi-square-test">Chi-Square Test<a class="anchor" aria-label="anchor" href="#chi-square-test"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/chi.sq.html">chi.sq</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">vs</span>, <span class="va">am</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span></span></code></pre></div>
@@ -276,21 +288,21 @@
 <div class="section level3">
 <h3 id="pearsons-correlation">Pearson’s Correlation<a class="anchor" aria-label="anchor" href="#pearsons-correlation"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="fu"><a href="reference/p.corr.html">p.corr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="correlation-matrix">Correlation Matrix<a class="anchor" aria-label="anchor" href="#correlation-matrix"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="fu"><a href="reference/cormat.html">cormat</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">am</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="one-way-anova">One-Way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="va">ow</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ow.anova.html">ow.anova</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ow</span><span class="op">)</span></span></code></pre></div>
@@ -298,7 +310,7 @@
 <div class="section level3">
 <h3 id="repeated-measures-anova">Repeated Measures ANOVA<a class="anchor" aria-label="anchor" href="#repeated-measures-anova"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Wide format</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">howell_aids_wide</span></span>
 <span><span class="fu"><a href="reference/rm.anova.html">rm.anova</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">student</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"t1"</span>, <span class="st">"t2"</span>, <span class="st">"t3"</span><span class="op">)</span><span class="op">)</span></span>
@@ -310,7 +322,7 @@
 <div class="section level3">
 <h3 id="residuals-plot">Residuals Plot<a class="anchor" aria-label="anchor" href="#residuals-plot"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="fu"><a href="reference/residplot.html">residplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -325,28 +337,36 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Dataset</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
+<td><code>GSS2024</code></td>
+<td>General Social Survey, 2024 — individual survey responses on a range of social topics (NORC at the University of Chicago)</td>
+</tr>
+<tr>
+<td><code>GSS2022</code></td>
+<td>General Social Survey, 2022 — individual survey responses on a range of social topics (NORC at the University of Chicago)</td>
+</tr>
+<tr>
 <td><code>GSS2014</code></td>
 <td>General Social Survey, 2014 — individual survey responses on a range of social topics (NORC at the University of Chicago)</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>UCR2015</code></td>
 <td>Uniform Crime Reports, 2015 — county-level crime data</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>howell_aids_wide</code></td>
 <td>Howell Student AIDS Knowledge Data in wide format (3 time points)</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>howell_aids_long</code></td>
 <td>Howell Student AIDS Knowledge Data in long format</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>Defendants2025</code></td>
 <td>Simulated data representing individual defendants at the Richard J. Donovan Correctional Facility, San Diego, CA (1,738 observations, 11 variables)</td>
 </tr>
@@ -409,7 +429,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
